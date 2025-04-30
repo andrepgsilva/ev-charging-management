@@ -1,0 +1,6 @@
+parameters:
+    level: max
+    paths:
+        - app
+includes:
+    - vendor/phpstan/phpstan-strict-rules/rules.neon
