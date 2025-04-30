@@ -32,7 +32,7 @@ cd ev-charging-backend
 ### General Configuration
 #### Copy the .env.example and Create Your Own .env
 ``` bash
-    cp .env.example .env
+cp .env.example .env
 ```
 Get the database env variables on docker-compose.yaml and use to configure your env.
 
@@ -57,7 +57,7 @@ The project already has a VS Code configuration to run with Xdebug. If you are u
 
 **Run Powershell as administrator:** 
 ``` Bash
- netsh interface portproxy set v4tov4 listenport=9000 listenaddress=0.0.0.0 connectport=9000 connectaddress=YOUR_HOST_ADDRESS
+netsh interface portproxy set v4tov4 listenport=9000 listenaddress=0.0.0.0 connectport=9000 connectaddress=YOUR_HOST_ADDRESS
 ```
 Your host address can be found using the command below:
 ``` Bash
@@ -88,4 +88,3 @@ docker-compose exec app composer test
 
 ### 🧑‍💻 Author
 Made with ❤️ by [Your Name]
-
