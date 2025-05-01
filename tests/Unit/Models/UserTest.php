@@ -16,6 +16,8 @@ test('to array', function () {
             'name',
             'email',
             'email_verified_at',
+            'password',
+            'remember_token',
             'created_at',
             'updated_at',
         ]);
