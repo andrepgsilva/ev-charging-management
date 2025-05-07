@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Models\Vehicle;
 use Database\Factories\CompanyFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -38,12 +37,14 @@ final class Company extends Model
         'address',
     ];
 
-    public function drivers(): ?HasMany
+    /** @return HasMany<Driver, $this> */
+    public function drivers(): HasMany
     {
         return $this->hasMany(Driver::class);
     }
 
-    public function vehicles(): ?HasMany
+    /** @return HasMany<Vehicle, $this> */
+    public function vehicles(): HasMany
     {
         return $this->hasMany(Vehicle::class);
     }

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use App\Models\Company;
 use App\Models\Driver;
+use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
