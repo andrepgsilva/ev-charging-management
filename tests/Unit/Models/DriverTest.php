@@ -25,6 +25,7 @@ test('to array', function () {
 
 test('if driver belongs to a company', function () {
     $driver = Driver::factory()->createOne();
+    expect($driver->company_id)->toBe(1);
 
     expect($driver->company)->toBeInstanceOf(Company::class);
 });
