@@ -18,7 +18,7 @@ final class CreateDriverRequest extends FormRequest
     {
         return [
             'name' => 'required|string|min:1|max:255',
-            'email' => 'required|email|min:5|max:255|unique:companies,email',
+            'email' => 'required|email|min:5|max:255|unique:drivers,email',
             'phone' => 'nullable|string|min:4|max:255',
             'company_id' => 'nullable|int|min:1',
         ];

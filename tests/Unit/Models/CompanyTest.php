@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Models\Driver;
 use App\Models\Company;
 use Illuminate\Support\Collection;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -26,6 +27,9 @@ test('to array', function () {
 
 test('if company has drivers', function () {
     $company = Company::factory()->createOne();
+    Driver::factory()->createOne([
+        'company_id' => $company->id,
+    ]);
 
     expect($company->drivers)->toBeInstanceOf(Collection::class);
 });
