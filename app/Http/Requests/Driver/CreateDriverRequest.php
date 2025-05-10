@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Requests\Company;
+namespace App\Http\Requests\Driver;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\ValidationRule;
 
-final class CreateCompanyRequest extends FormRequest
+final class CreateDriverRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -19,9 +19,8 @@ final class CreateCompanyRequest extends FormRequest
         return [
             'name' => 'required|string|min:1|max:255',
             'email' => 'required|email|min:5|max:255|unique:companies,email',
-            'tax_number' => 'required|string|min:9|max:255|unique:companies,tax_number',
-            'phone' => 'required|string|min:4|max:255',
-            'address' => 'required|string|min:3|max:255',
+            'phone' => 'nullable|string|min:4|max:255',
+            'company_id' => 'nullable|int|min:1',
         ];
     }
 }
