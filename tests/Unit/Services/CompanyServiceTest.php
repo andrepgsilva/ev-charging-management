@@ -38,15 +38,16 @@ it('retrieves a company by id', function () {
 
 it('creates a company', function () {
     /** @var Company */
-    $company = Company::factory()->createOne();
+    $company = Company::factory()->makeOne();
 
-    $dto = new CreateCompanyDto(
-        name: $company->name,
-        email: $company->email . 'dummy',
-        tax_number: $company->tax_number . '000',
-        phone: $company->phone,
-        address: $company->address
-    );
+    unset($company->id);
+    unset($company->created_at);
+    unset($company->updated_at);
+    $company->tax_number = '678678788';
+    $company->email = 'pest@example.com';
+
+    $dto = new CreateCompanyDto();
+    $dto->fillFromArray($company->toArray());
 
     /** @var CompanyService */
     $service = app(CompanyService::class);
@@ -60,13 +61,13 @@ it('updates a company', function () {
     /** @var Company */
     $company = Company::factory()->createOne();
 
-    $dto = new UpdateCompanyDto(
-        name: $company->name . ' updated name',
-        email: $company->email,
-        tax_number: $company->tax_number . '999',
-        phone: $company->phone,
-        address: $company->address
-    );
+    $dto = new UpdateCompanyDto();
+
+    $dto->name = $company->name.' updated name';
+    $dto->email = $company->email;
+    $dto->taxNumber = $company->tax_number.'999';
+    $dto->phone = $company->phone;
+    $dto->address = $company->address;
 
     /** @var CompanyService */
     $service = app(CompanyService::class);
@@ -74,7 +75,7 @@ it('updates a company', function () {
     $companyUpdated = $service->update(1, $dto);
 
     expect($company)->not->toBeNull();
-    expect($companyUpdated->name)->toBe($company->name . ' updated name');
+    expect($companyUpdated->name)->toBe($company->name.' updated name');
 });
 
 it('deletes a company', function () {

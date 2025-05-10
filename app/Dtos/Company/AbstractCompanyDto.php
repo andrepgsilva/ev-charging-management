@@ -4,41 +4,46 @@ declare(strict_types=1);
 
 namespace App\Dtos\Company;
 
-use App\Dtos\DtoTrait;
+use App\Traits\DtoTrait;
 
 abstract class AbstractCompanyDto
 {
+    /**
+     * @use DtoTrait<array{
+     *     name?: string,
+     *     email?: string,
+     *     tax_number?: string,
+     *     phone?: string|null,
+     *     address?: string|null
+     * }>
+     */
     use DtoTrait;
-
-    public function __construct(
-        public string $name,
-        public string $email,
-        public string $tax_number,
-        public ?string $phone = null,
-        public ?string $address = null
-    ) {
-        //
-    }
 
     /**
      * @return array{
-     *  name: string,
-     *  email: string,
-     *  tax_number: string,
-     *  phone: string|null,
-     *  address: string|null
+     *  name?: string,
+     *  email?: string,
+     *  tax_number?: string,
+     *  phone?: string|null,
+     *  address?: string|null
      * }
      */
     final public function toArray(): array
     {
-        /** @var array{
-         *  name: string,
-         *  email: string,
-         *  tax_number: string,
-         *  phone: string|null,
-         *  address: string|null
-         * }
-         */
-        return $this->convertToArray();
+        return $this->convertToArray(true);
+    }
+
+    /**
+     * @param  array{
+     *  name?: string,
+     *  email?: string,
+     *  tax_number?: string,
+     *  phone?: string,
+     *  address?: string
+     * } $data
+     */
+    final public function fillFromArray(array $data): void
+    {
+        $this->fill($data, true);
     }
 }
