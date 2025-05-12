@@ -35,9 +35,11 @@ final class DriverRepository
     }
 
     /** @param array<string, mixed> $data */
-    public function update(int $id, array $data): ?Driver
+    public function update(Driver|int $driver, array $data): ?Driver
     {
-        $driver = $this->getById($id);
+        if (! ($driver instanceof Driver)) {
+            $driver = $this->getById($driver);
+        }
 
         if (! is_null($driver)) {
             $driver->fill($data);
@@ -49,9 +51,11 @@ final class DriverRepository
         return null;
     }
 
-    public function delete(int $id): bool
+    public function delete(Driver|int $driver): bool
     {
-        $driver = $this->getById($id);
+        if (! ($driver instanceof Driver)) {
+            $driver = $this->getById($driver);
+        }
 
         if (! is_null($driver)) {
             return (bool) $driver->delete();

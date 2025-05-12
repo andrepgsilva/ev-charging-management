@@ -36,13 +36,13 @@ final class CompanyService
         return $this->companyRepository->create($createCompanyDto->toArray());
     }
 
-    public function update(int $id, UpdateCompanyDto $updateCompanyDto): ?Company
+    public function update(Company|int $company, UpdateCompanyDto $updateCompanyDto): ?Company
     {
-        return $this->companyRepository->update($id, $updateCompanyDto->toArray());
+        return $this->companyRepository->update($company, $updateCompanyDto->toArray());
     }
 
-    public function delete(int $id): bool
+    public function delete(Company|int $company): bool
     {
-        return $this->companyRepository->delete($id);
+        return $this->companyRepository->delete($company);
     }
 }

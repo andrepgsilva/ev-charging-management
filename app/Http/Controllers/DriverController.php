@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Models\Driver;
 use Illuminate\Http\Request;
 use App\Services\DriverService;
 use App\Traits\ApiResponseTrait;
@@ -34,17 +35,8 @@ final class DriverController
         );
     }
 
-    public function show(string $id): JsonResponse
+    public function show(Driver $driver): JsonResponse
     {
-        $driver = $this->driverService->getById((int) $id);
-
-        if (is_null($driver)) {
-            return $this->errorResponse(
-                'Driver not found',
-                404
-            );
-        }
-
         return $this->successResponse(
             $driver->toResource(DriverResource::class),
             'Driver retrieved successfully'
@@ -82,11 +74,11 @@ final class DriverController
     /**
      * @param  UpdateDriverRequest&Request  $updateDriverRequest
      */
-    public function update(string $id, UpdateDriverRequest $updateDriverRequest): JsonResponse
-    {
-
-        $updateDriverDto = app(UpdateDriverDto::class);
-
+    public function update(
+        Driver $driver,
+        UpdateDriverRequest $updateDriverRequest,
+        UpdateDriverDto $updateDriverDto
+    ): JsonResponse {
         /**
          * @var array{
          *  name: string,
@@ -99,17 +91,11 @@ final class DriverController
         $data = $updateDriverRequest->all();
         $updateDriverDto->fillFromArray($data);
 
+        /** @var Driver $driver */
         $driver = $this->driverService->update(
-            (int) $id,
+            $driver,
             $updateDriverDto
         );
-
-        if (is_null($driver)) {
-            return $this->errorResponse(
-                'Driver not found',
-                404
-            );
-        }
 
         return $this->successResponse(
             $driver->toResource(DriverResource::class),
@@ -118,16 +104,9 @@ final class DriverController
         );
     }
 
-    public function destroy(string $id): JsonResponse
+    public function destroy(Driver $driver): JsonResponse
     {
-        $isDeleted = $this->driverService->delete((int) $id);
-
-        if (! $isDeleted) {
-            return $this->errorResponse(
-                'Driver not found',
-                404
-            );
-        }
+        $this->driverService->delete($driver);
 
         return $this->successResponse(
             [],

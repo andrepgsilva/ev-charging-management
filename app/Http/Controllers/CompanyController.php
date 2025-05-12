@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use Illuminate\Http\Request;
 use App\Services\CompanyService;
 use App\Traits\ApiResponseTrait;
@@ -34,17 +35,8 @@ final class CompanyController
         );
     }
 
-    public function show(string $id): JsonResponse
+    public function show(Company $company): JsonResponse
     {
-        $company = $this->companyService->getById((int) $id);
-
-        if (is_null($company)) {
-            return $this->errorResponse(
-                'Company not found',
-                404
-            );
-        }
-
         return $this->successResponse(
             $company->toResource(CompanyResource::class),
             'Company retrieved successfully'
@@ -82,11 +74,11 @@ final class CompanyController
     /**
      * @param  UpdateCompanyRequest&Request  $updateCompanyRequest
      */
-    public function update(string $id, UpdateCompanyRequest $updateCompanyRequest): JsonResponse
-    {
-
-        $updateCompanyDto = app(UpdateCompanyDto::class);
-
+    public function update(
+        Company $company,
+        UpdateCompanyRequest $updateCompanyRequest,
+        UpdateCompanyDto $updateCompanyDto
+    ): JsonResponse {
         /**
          * @var array{
          *  name: string,
@@ -99,17 +91,11 @@ final class CompanyController
         $data = $updateCompanyRequest->all();
         $updateCompanyDto->fillFromArray($data);
 
+        /** @var Company */
         $company = $this->companyService->update(
-            (int) $id,
+            $company,
             $updateCompanyDto
         );
-
-        if (is_null($company)) {
-            return $this->errorResponse(
-                'Company not found',
-                404
-            );
-        }
 
         return $this->successResponse(
             $company->toResource(CompanyResource::class),
@@ -118,16 +104,9 @@ final class CompanyController
         );
     }
 
-    public function destroy(string $id): JsonResponse
+    public function destroy(Company $company): JsonResponse
     {
-        $isDeleted = $this->companyService->delete((int) $id);
-
-        if (! $isDeleted) {
-            return $this->errorResponse(
-                'Company not found',
-                404
-            );
-        }
+        $this->companyService->delete($company);
 
         return $this->successResponse(
             [],

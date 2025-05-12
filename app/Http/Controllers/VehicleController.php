@@ -46,8 +46,10 @@ final class VehicleController
     /**
      * @param  CreateVehicleRequest&Request  $createVehicleRequest
      */
-    public function store(CreateVehicleRequest $createVehicleRequest, CreateVehicleDto $createVehicleDto): JsonResponse
-    {
+    public function store(
+        CreateVehicleRequest $createVehicleRequest,
+        CreateVehicleDto $createVehicleDto
+    ): JsonResponse {
         /**
          * @var array{
          *  make: string,

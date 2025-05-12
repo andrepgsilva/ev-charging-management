@@ -35,9 +35,11 @@ final class CompanyRepository
     }
 
     /** @param array<string, mixed> $data */
-    public function update(int $id, array $data): ?Company
+    public function update(Company|int $company, array $data): ?Company
     {
-        $company = $this->getById($id);
+        if (! ($company instanceof Company)) {
+            $company = $this->getById($company);
+        }
 
         if (! is_null($company)) {
             $company->fill($data);
@@ -49,9 +51,11 @@ final class CompanyRepository
         return null;
     }
 
-    public function delete(int $id): bool
+    public function delete(Company|int $company): bool
     {
-        $company = $this->getById($id);
+        if (! ($company instanceof Company)) {
+            $company = $this->getById($company);
+        }
 
         if (! is_null($company)) {
             return (bool) $company->delete();

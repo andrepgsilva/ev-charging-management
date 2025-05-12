@@ -36,13 +36,13 @@ final class DriverService
         return $this->driverRepository->create($createDriverDto->toArray());
     }
 
-    public function update(int $id, UpdateDriverDto $updateDriverDto): ?Driver
+    public function update(Driver|int $driver, UpdateDriverDto $updateDriverDto): ?Driver
     {
-        return $this->driverRepository->update($id, $updateDriverDto->toArray());
+        return $this->driverRepository->update($driver, $updateDriverDto->toArray());
     }
 
-    public function delete(int $id): bool
+    public function delete(Driver|int $driver): bool
     {
-        return $this->driverRepository->delete($id);
+        return $this->driverRepository->delete($driver);
     }
 }

@@ -14,18 +14,18 @@ Route::get('/user', function (Request $request) {
 
 Route::middleware('api')->prefix('companies')->group(function () {
     Route::get('/', [CompanyController::class, 'index']);
-    Route::get('/{id}', [CompanyController::class, 'show']);
+    Route::get('/{company}', [CompanyController::class, 'show']);
     Route::post('/', [CompanyController::class, 'store']);
-    Route::put('/{id}', [CompanyController::class, 'update']);
-    Route::delete('/{id}', [CompanyController::class, 'destroy']);
+    Route::put('/{company}', [CompanyController::class, 'update']);
+    Route::delete('/{company}', [CompanyController::class, 'destroy']);
 });
 
 Route::middleware('api')->prefix('drivers')->group(function () {
     Route::get('/', [DriverController::class, 'index']);
-    Route::get('/{id}', [DriverController::class, 'show']);
+    Route::get('/{driver}', [DriverController::class, 'show']);
     Route::post('/', [DriverController::class, 'store']);
-    Route::put('/{id}', [DriverController::class, 'update']);
-    Route::delete('/{id}', [DriverController::class, 'destroy']);
+    Route::put('/{driver}', [DriverController::class, 'update']);
+    Route::delete('/{driver}', [DriverController::class, 'destroy']);
 });
 
 Route::middleware('api')->prefix('vehicles')->group(function () {

@@ -26,14 +26,4 @@ trait ApiResponseTrait
             'data' => $data,
         ], $statusCode);
     }
-
-    public function errorResponse(
-        string $message = 'Error',
-        int $statusCode = 400
-    ): JsonResponse {
-        return response()->json([
-            'status' => false,
-            'message' => $message,
-        ], $statusCode);
-    }
 }
