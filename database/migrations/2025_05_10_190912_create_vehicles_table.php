@@ -21,8 +21,8 @@ return new class extends Migration
             $table->string('model');
             $table->string('plate_number')->unique();
             $table->decimal('battery_capacity_kwh', 6, 2)->nullable();
-            $table->foreignIdFor(Driver::class)->nullable();
-            $table->foreignIdFor(Company::class)->nullable();
+            $table->foreignIdFor(Driver::class)->nullable()->constrained();
+            $table->foreignIdFor(Company::class)->nullable()->constrained();
 
             $table->timestamps();
         });

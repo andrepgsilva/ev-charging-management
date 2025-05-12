@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Application;
-use App\Helpers\ValidationErrorResponseHelper;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -21,8 +20,11 @@ return Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions) {
         $exceptions->render(function (ValidationException $e, Request $request) {
-            return ValidationErrorResponseHelper::execute(
-                validationException: $e
+            return response()->json([
+                'status' => false,
+                'message' => 'Validation Error',
+                'errors' => $e->validator->errors()->toArray(),
+            ], 422
             );
         });
     })->create();

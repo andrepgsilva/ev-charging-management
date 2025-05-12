@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -13,13 +12,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string $make
  * @property string $model
  * @property string $plate_number
- * @property float $battery_capacity_kwh
+ * @property string $battery_capacity_kwh
  * @property int|null $driver_id
  * @property int|null $company_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  */
-final class Vehicle extends Model
+final class Vehicle extends BaseModel
 {
     /** @use HasFactory<\Database\Factories\VehicleFactory> */
     use HasFactory;

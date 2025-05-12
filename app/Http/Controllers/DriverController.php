@@ -26,11 +26,11 @@ final class DriverController
 
     public function index(): JsonResponse
     {
-        $allCompanies = $this->driverService->getAll();
+        $allDrivers = $this->driverService->getAll();
 
         return $this->successResponse(
-            $allCompanies->toResourceCollection(DriverResource::class),
-            'Companies retrieved successfully'
+            $allDrivers->toResourceCollection(DriverResource::class),
+            'Drivers retrieved successfully'
         );
     }
 
