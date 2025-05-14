@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 use App\Models\Driver;
 use App\Repositories\DriverRepository;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-uses(RefreshDatabase::class);
+uses(DatabaseMigrations::class);
 
 test('it can retrieve a driver by id', function () {
     $driver = Driver::factory()->createOne();

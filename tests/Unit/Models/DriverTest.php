@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 use App\Models\Driver;
 use App\Models\Company;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-uses(RefreshDatabase::class);
+uses(DatabaseMigrations::class);
 
 test('to array', function () {
     $driver = Driver::factory()->createOne();

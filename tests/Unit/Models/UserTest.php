@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 use App\Models\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-uses(RefreshDatabase::class);
+uses(DatabaseMigrations::class);
 
 test('to array', function () {
     $user = User::factory()->create()->fresh();

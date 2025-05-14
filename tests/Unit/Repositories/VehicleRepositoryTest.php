@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 use App\Models\Vehicle;
 use App\Repositories\VehicleRepository;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-uses(RefreshDatabase::class);
+uses(DatabaseMigrations::class);
 
 test('it can retrieve a vehicle by id', function () {
     $vehicle = Vehicle::factory()->createOne();

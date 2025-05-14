@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 use App\Models\Vehicle;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-uses(RefreshDatabase::class);
+uses(DatabaseMigrations::class);
 
 test('to array', function () {
     $vehicle = Vehicle::factory()->createOne();

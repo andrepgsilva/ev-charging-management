@@ -7,9 +7,9 @@ use App\Services\DriverService;
 use App\Dtos\Driver\CreateDriverDto;
 use App\Dtos\Driver\UpdateDriverDto;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-uses(RefreshDatabase::class);
+uses(DatabaseMigrations::class);
 
 it('retrieves all drivers', function () {
     Driver::factory()->createOne();

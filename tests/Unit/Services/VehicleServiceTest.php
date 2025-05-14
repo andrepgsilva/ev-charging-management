@@ -7,9 +7,9 @@ use App\Services\VehicleService;
 use App\Dtos\Vehicle\CreateVehicleDto;
 use App\Dtos\Vehicle\UpdateVehicleDto;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-uses(RefreshDatabase::class);
+uses(DatabaseMigrations::class);
 
 it('retrieves all vehicles', function () {
     Vehicle::factory()->createOne();

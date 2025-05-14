@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 use App\Models\Vehicle;
 use Illuminate\Testing\TestResponse;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-uses(RefreshDatabase::class);
+uses(DatabaseMigrations::class);
 
 it('can get all vehicles', function () {
     Vehicle::factory()->count(2)->create();

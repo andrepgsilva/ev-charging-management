@@ -7,9 +7,9 @@ use App\Services\CompanyService;
 use App\Dtos\Company\CreateCompanyDto;
 use App\Dtos\Company\UpdateCompanyDto;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-uses(RefreshDatabase::class);
+uses(DatabaseMigrations::class);
 
 it('retrieves all companies', function () {
     Company::factory()->createOne();

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 use App\Models\Company;
 use App\Repositories\CompanyRepository;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-uses(RefreshDatabase::class);
+uses(DatabaseMigrations::class);
 
 test('it can retrieve a company by id', function () {
     $company = Company::factory()->createOne();

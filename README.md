@@ -86,5 +86,17 @@ docker-compose exec app composer test:lint
 docker-compose exec app composer test
 ```
 
+## Strategies
+### Charging Sessions Table Partitioning
+**Why Partition?**
+
+The charging_sessions table is expected to grow rapidly, with millions of records per year as the platform scales. To ensure high performance for queries and maintenance, we use PostgreSQL native table partitioning by month.
+
+**Benefits**:
+
+- Performance: Queries for recent sessions (e.g., “last month’s usage”) only scan relevant partitions, not the entire table.
+- Maintenance: Old data can be dropped instantly by removing a partition, making retention policies efficient.
+- Scalability: Each partition remains a manageable size, avoiding full-table scans and bloated indexes.
+
 ### 🧑‍💻 Author
-Made with ❤️ by [Your Name]
+Made with ❤️ by Andre Silva
