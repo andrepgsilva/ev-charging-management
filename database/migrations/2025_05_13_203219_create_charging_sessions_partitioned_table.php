@@ -34,6 +34,7 @@ return new class extends Migration
         DB::statement('CREATE INDEX idx_charging_sessions_company_id ON charging_sessions (company_id);');
         DB::statement('CREATE INDEX idx_charging_sessions_vehicle_id ON charging_sessions (vehicle_id);');
         DB::statement('CREATE INDEX idx_charging_sessions_location_id ON charging_sessions (location_id);');
+        DB::statement('CREATE UNIQUE INDEX uniq_charging_sessions_id_start_time ON charging_sessions (id, start_time);');
     }
 
     /**
