@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Models;
+namespace App\Modules\Charging\Models;
 
+use App\Models\BaseModel;
 use Illuminate\Support\Carbon;
 use Database\Factories\ChargingSessionFactory;
 use App\Modules\Company\Factories\CompanyFactory;

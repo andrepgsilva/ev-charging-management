@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace Database\Factories;
 
 use Carbon\Carbon;
-use App\Models\ChargingSession;
 use App\Modules\Fleet\Models\Driver;
 use App\Modules\Fleet\Models\Vehicle;
 use App\Modules\Company\Models\Company;
+use App\Modules\Charging\Models\ChargingSession;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

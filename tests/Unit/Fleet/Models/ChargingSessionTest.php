@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use App\Models\ChargingSession;
+use App\Modules\Charging\Models\ChargingSession;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 uses(DatabaseMigrations::class);

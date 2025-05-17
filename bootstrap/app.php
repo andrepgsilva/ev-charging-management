@@ -12,7 +12,6 @@ use Illuminate\Foundation\Configuration\Middleware;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        commands: __DIR__.'/../routes/console.php',
         using: function () {
             Route::middleware('api')
                 ->prefix('api')
@@ -21,7 +20,16 @@ return Application::configure(basePath: dirname(__DIR__))
             Route::middleware('api')
                 ->prefix('api')
                 ->group(base_path('routes/company.php'));
+
+            Route::middleware('api')
+                ->prefix('api')
+                ->group(base_path('routes/driver.php'));
+
+            Route::middleware('api')
+                ->prefix('api')
+                ->group(base_path('routes/vehicle.php'));
         },
+        commands: __DIR__.'/../routes/console.php',
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->append(ForceJsonHeaderResponse::class);
