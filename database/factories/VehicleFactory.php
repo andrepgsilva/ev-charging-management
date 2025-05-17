@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use App\Models\Driver;
-use App\Models\Company;
+use App\Modules\Company\Models\Company;
+use App\Modules\Fleet\Models\Driver;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Vehicle>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Modules\Fleet\Models\Vehicle>
  */
 final class VehicleFactory extends Factory
 {

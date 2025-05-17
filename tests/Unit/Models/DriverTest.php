@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Models\Driver;
-use App\Models\Company;
+use App\Modules\Company\Models\Company;
+use App\Modules\Fleet\Models\Driver;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 uses(DatabaseMigrations::class);

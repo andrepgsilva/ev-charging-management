@@ -75,7 +75,8 @@
             "@test:types",
             "@test:type-coverage",
             "@test:unit"
-        ]
+        ],
+        "dartisan": "docker-compose exec app php artisan"
     },
     "extra": {
         "laravel": {

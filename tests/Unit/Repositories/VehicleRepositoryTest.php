@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Models\Vehicle;
-use App\Repositories\VehicleRepository;
+use App\Modules\Fleet\Models\Vehicle;
+use App\Modules\Fleet\Repositories\VehicleRepository;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 uses(DatabaseMigrations::class);

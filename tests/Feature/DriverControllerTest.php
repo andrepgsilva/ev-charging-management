@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use App\Models\Driver;
-use Illuminate\Testing\TestResponse;
+use App\Modules\Fleet\Models\Driver;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Testing\TestResponse;
 
 uses(DatabaseMigrations::class);
 

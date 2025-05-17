@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use App\Models\Driver;
-use App\Services\DriverService;
-use App\Dtos\Driver\CreateDriverDto;
-use App\Dtos\Driver\UpdateDriverDto;
+use App\Modules\Fleet\Dtos\Driver\CreateDriverDto;
+use App\Modules\Fleet\Dtos\Driver\UpdateDriverDto;
+use App\Modules\Fleet\Models\Driver;
+use App\Modules\Fleet\Services\DriverService;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
