@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
+use App\Modules\Fleet\Models\Driver;
 use App\Modules\Fleet\Models\Vehicle;
+use App\Modules\Company\Models\Company;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 uses(DatabaseMigrations::class);
@@ -27,11 +29,11 @@ test('to array', function () {
 test('if vehicle belongs to a driver', function () {
     $vehicle = Vehicle::factory()->createOne();
 
-    expect($vehicle->driver)->toBeInstanceOf(\App\Modules\Fleet\Models\Driver::class);
+    expect($vehicle->driver)->toBeInstanceOf(Driver::class);
 });
 
 test('if vehicle belongs to a company', function () {
     $vehicle = Vehicle::factory()->createOne();
 
-    expect($vehicle->company)->toBeInstanceOf(\App\Modules\Company\Models\Company::class);
+    expect($vehicle->company)->toBeInstanceOf(Company::class);
 });

@@ -2,29 +2,43 @@
 
 declare(strict_types=1);
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Http\Middleware\ForceJsonHeaderResponse;
 
-beforeEach(function () {
-    Route::middleware([ForceJsonHeaderResponse::class])->any('/test-json-middleware', function () {
-        return response(['message' => 'ok']);
-    });
+it('adds Content-Type header when not present', function () {
+    $middleware = new ForceJsonHeaderResponse();
+    $request = new Request();
+
+    $response = new Response();
+    $next = fn () => $response;
+
+    $result = $middleware->handle($request, $next);
+
+    expect($result->headers->get('Content-Type'))->toBe('application/json');
 });
 
-it('forces Accept header to application/json', function () {
-    $response = $this->get('/test-json-middleware', [
-        'Accept' => 'text/html',
-    ]);
+it('preserves existing Content-Type header', function () {
+    $middleware = new ForceJsonHeaderResponse();
+    $request = new Request();
 
-    $response->assertHeader('Content-Type', 'application/json');
-    $response->assertJson(['message' => 'ok']);
+    $response = new Response();
+    $response->headers->set('Content-Type', 'text/plain');
+    $next = fn () => $response;
+
+    $result = $middleware->handle($request, $next);
+
+    expect($result->headers->get('Content-Type'))->toBe('text/plain');
 });
 
-it('does not remove existing application/json Accept header', function () {
-    $response = $this->get('/test-json-middleware', [
-        'Accept' => 'application/json',
-    ]);
+it('returns the same response instance', function () {
+    $middleware = new ForceJsonHeaderResponse();
+    $request = new Request();
 
-    $response->assertHeader('Content-Type', 'application/json');
-    $response->assertJson(['message' => 'ok']);
+    $response = new Response();
+    $next = fn () => $response;
+
+    $result = $middleware->handle($request, $next);
+
+    expect($result)->toBe($response);
 });

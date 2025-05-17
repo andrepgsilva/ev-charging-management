@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-use App\Http\Middleware\ForceJsonHeaderResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use Illuminate\Validation\ValidationException;
+use App\Http\Middleware\ForceJsonHeaderResponse;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
-        commands: __DIR__ . '/../routes/console.php',
+        commands: __DIR__.'/../routes/console.php',
         using: function () {
             Route::middleware('api')
                 ->prefix('api')

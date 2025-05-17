@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Modules\Fleet\Services;
 
+use Illuminate\Support\Collection;
+use App\Modules\Fleet\Models\Vehicle;
 use App\Modules\Fleet\Dtos\Vehicle\CreateVehicleDto;
 use App\Modules\Fleet\Dtos\Vehicle\UpdateVehicleDto;
-use App\Modules\Fleet\Models\Vehicle;
 use App\Modules\Fleet\Repositories\VehicleRepository;
-use Illuminate\Support\Collection;
 
 final readonly class VehicleService
 {

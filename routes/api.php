@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use App\Modules\Fleet\Controllers\DriverController;
-use App\Modules\Fleet\Controllers\VehicleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Modules\Fleet\Controllers\DriverController;
+use App\Modules\Fleet\Controllers\VehicleController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();

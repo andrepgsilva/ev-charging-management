@@ -4,23 +4,23 @@ declare(strict_types=1);
 
 namespace App\Modules\Fleet\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use App\Modules\Fleet\Models\Driver;
+use App\Shared\Traits\ApiResponseTrait;
+use App\Modules\Fleet\Services\DriverService;
+use App\Modules\Fleet\Resources\DriverResource;
 use App\Modules\Fleet\Dtos\Driver\CreateDriverDto;
 use App\Modules\Fleet\Dtos\Driver\UpdateDriverDto;
-use App\Modules\Fleet\Models\Driver;
 use App\Modules\Fleet\Requests\Driver\CreateDriverRequest;
 use App\Modules\Fleet\Requests\Driver\UpdateDriverRequest;
-use App\Modules\Fleet\Resources\DriverResource;
-use App\Modules\Fleet\Services\DriverService;
-use App\Shared\Traits\ApiResponseTrait;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 final class DriverController
 {
     use ApiResponseTrait;
 
     public function __construct(
-        private DriverService $driverService,
+        private readonly DriverService $driverService,
     ) {
         //
     }

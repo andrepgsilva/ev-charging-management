@@ -6,6 +6,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 final class CreateChargingSessionMonthlyPartitionTable extends Command
 {
@@ -24,14 +25,20 @@ final class CreateChargingSessionMonthlyPartitionTable extends Command
      */
     public function handle(): void
     {
-        // Artisan command pseudocode
+        if (! Schema::hasTable('charging_sessions')) {
+            $this->error('The charging_sessions table does not exist');
+
+            return;
+        }
+
         $nextMonth = now()->addMonth()->format('Y_m');
         $start = now()->addMonth()->startOfMonth()->toDateString();
         $end = now()->addMonth()->endOfMonth()->addDay()->toDateString();
 
-        DB::statement("
-            CREATE TABLE charging_sessions_{$nextMonth} PARTITION OF charging_sessions
-            FOR VALUES FROM ('$start') TO ('$end');
-        ");
+        $query = "CREATE TABLE charging_sessions_{$nextMonth}";
+        $query .= ' PARTITION OF charging_sessions';
+        $query .= " FOR VALUES FROM ('$start') TO ('$end')";
+
+        DB::statement($query);
     }
 }

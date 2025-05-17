@@ -4,17 +4,20 @@ declare(strict_types=1);
 
 namespace Database\Factories;
 
-use App\Modules\Company\Models\Company;
+use Carbon\Carbon;
+use App\Models\ChargingSession;
 use App\Modules\Fleet\Models\Driver;
 use App\Modules\Fleet\Models\Vehicle;
-use Carbon\Carbon;
+use App\Modules\Company\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\ChargingSessionFactory>
+ * @extends Factory<ChargingSessionFactory>
  */
 final class ChargingSessionFactory extends Factory
 {
+    protected $model = ChargingSession::class;
+
     /**
      * Define the model's default state.
      *

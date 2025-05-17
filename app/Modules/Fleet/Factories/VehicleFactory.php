@@ -2,17 +2,20 @@
 
 declare(strict_types=1);
 
-namespace Database\Factories;
+namespace App\Modules\Fleet\Factories;
 
-use App\Modules\Company\Models\Company;
 use App\Modules\Fleet\Models\Driver;
+use App\Modules\Fleet\Models\Vehicle;
+use App\Modules\Company\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Modules\Fleet\Models\Vehicle>
+ * @extends Factory<Vehicle>
  */
 final class VehicleFactory extends Factory
 {
+    protected $model = Vehicle::class;
+
     /**
      * Define the model's default state.
      *

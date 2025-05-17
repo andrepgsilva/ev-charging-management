@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
+use App\Modules\Fleet\Models\Vehicle;
+use Illuminate\Database\Eloquent\Collection;
+use App\Modules\Fleet\Services\VehicleService;
 use App\Modules\Fleet\Dtos\Vehicle\CreateVehicleDto;
 use App\Modules\Fleet\Dtos\Vehicle\UpdateVehicleDto;
-use App\Modules\Fleet\Models\Vehicle;
-use App\Modules\Fleet\Services\VehicleService;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 uses(DatabaseMigrations::class);

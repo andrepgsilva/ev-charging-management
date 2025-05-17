@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use App\Modules\Company\Models\Company;
-use App\Modules\Company\Repositories\CompanyRepository;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
+use App\Modules\Company\Repositories\CompanyRepository;
 
 uses(DatabaseMigrations::class);
 

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-use App\Modules\Company\Models\Company;
-use App\Modules\Fleet\Models\Driver;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Collection;
+use App\Modules\Fleet\Models\Driver;
+use App\Modules\Company\Models\Company;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 uses(DatabaseMigrations::class);
 
-test('to array', function () {
+it('to array', function () {
     $company = Company::factory()->createOne();
 
     expect(array_keys($company->toArray()))
@@ -25,7 +25,7 @@ test('to array', function () {
         ]);
 });
 
-test('if company has drivers', function () {
+it('if company has drivers', function () {
     $company = Company::factory()->createOne();
     Driver::factory()->createOne([
         'company_id' => $company->id,
@@ -34,7 +34,7 @@ test('if company has drivers', function () {
     expect($company->drivers)->toBeInstanceOf(Collection::class);
 });
 
-test('if company has vehicles', function () {
+it('if company has vehicles', function () {
     $company = Company::factory()->createOne();
 
     expect($company->vehicles)->toBeInstanceOf(Collection::class);

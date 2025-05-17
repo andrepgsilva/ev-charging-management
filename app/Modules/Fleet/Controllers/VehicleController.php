@@ -4,27 +4,31 @@ declare(strict_types=1);
 
 namespace App\Modules\Fleet\Controllers;
 
+use Throwable;
+use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use App\Modules\Fleet\Models\Vehicle;
+use App\Shared\Traits\ApiResponseTrait;
+use App\Modules\Fleet\Services\VehicleService;
+use App\Modules\Fleet\Resources\VehicleResource;
 use App\Modules\Fleet\Dtos\Vehicle\CreateVehicleDto;
 use App\Modules\Fleet\Dtos\Vehicle\UpdateVehicleDto;
-use App\Modules\Fleet\Models\Vehicle;
 use App\Modules\Fleet\Requests\Vehicle\CreateVehicleRequest;
 use App\Modules\Fleet\Requests\Vehicle\UpdateVehicleRequest;
-use App\Modules\Fleet\Resources\VehicleResource;
-use App\Modules\Fleet\Services\VehicleService;
-use App\Shared\Traits\ApiResponseTrait;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
 final class VehicleController
 {
     use ApiResponseTrait;
 
     public function __construct(
-        private VehicleService $vehicleService,
+        private readonly VehicleService $vehicleService,
     ) {
         //
     }
 
+    /**
+     * @throws Throwable
+     */
     public function index(): JsonResponse
     {
         $allVehicles = $this->vehicleService->getAll();
@@ -35,6 +39,9 @@ final class VehicleController
         );
     }
 
+    /**
+     * @throws Throwable
+     */
     public function show(Vehicle $vehicle): JsonResponse
     {
         return $this->successResponse(
@@ -45,6 +52,8 @@ final class VehicleController
 
     /**
      * @param  CreateVehicleRequest&Request  $createVehicleRequest
+     *
+     * @throws Throwable
      */
     public function store(
         CreateVehicleRequest $createVehicleRequest,
@@ -58,7 +67,7 @@ final class VehicleController
          *  battery_capacity_kwh?: string,
          *  company_id?: int,
          *  driver_id?: int,
-         * }
+         * } $data
          */
         $data = $createVehicleRequest->all();
         $createVehicleDto->fillFromArray($data);
@@ -74,6 +83,8 @@ final class VehicleController
 
     /**
      * @param  UpdateVehicleRequest&Request  $updateVehicleRequest
+     *
+     * @throws Throwable
      */
     public function update(
         Vehicle $vehicle,
@@ -88,7 +99,7 @@ final class VehicleController
          *  battery_capacity_kwh?: string,
          *  company_id?: int,
          *  driver_id?: int,
-         * }
+         * } $data
          */
         $data = $updateVehicleRequest->all();
         $updateVehicleDto->fillFromArray($data);

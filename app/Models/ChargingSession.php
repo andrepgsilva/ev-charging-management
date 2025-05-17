@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use Illuminate\Support\Carbon;
+use Database\Factories\ChargingSessionFactory;
 use App\Modules\Company\Factories\CompanyFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Support\Carbon;
 
 /**
  * @property int $id
@@ -41,4 +42,9 @@ final class ChargingSession extends BaseModel
         'energy_kwh',
         'status',
     ];
+
+    protected static function newFactory(): ChargingSessionFactory
+    {
+        return ChargingSessionFactory::new();
+    }
 }

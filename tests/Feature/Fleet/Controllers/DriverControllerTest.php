@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 use App\Modules\Fleet\Models\Driver;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Testing\TestResponse;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 uses(DatabaseMigrations::class);
 

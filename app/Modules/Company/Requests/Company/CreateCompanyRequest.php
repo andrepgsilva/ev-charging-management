@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Modules\Company\Requests\Company;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 final class CreateCompanyRequest extends FormRequest
@@ -15,9 +14,7 @@ final class CreateCompanyRequest extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, ValidationRule|array<mixed>|string>
+     * @return array<string, string>
      */
     public function rules(): array
     {

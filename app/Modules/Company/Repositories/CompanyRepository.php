@@ -7,10 +7,10 @@ namespace App\Modules\Company\Repositories;
 use App\Modules\Company\Models\Company;
 use Illuminate\Database\Eloquent\Collection;
 
-final class CompanyRepository
+final readonly class CompanyRepository
 {
     public function __construct(
-        private readonly Company $model
+        private Company $model
     ) {
         //
     }

@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace App\Modules\Fleet\Services;
 
+use Illuminate\Support\Collection;
+use App\Modules\Fleet\Models\Driver;
 use App\Modules\Fleet\Dtos\Driver\CreateDriverDto;
 use App\Modules\Fleet\Dtos\Driver\UpdateDriverDto;
-use App\Modules\Fleet\Models\Driver;
 use App\Modules\Fleet\Repositories\DriverRepository;
-use Illuminate\Support\Collection;
 
-final class DriverService
+final readonly class DriverService
 {
     public function __construct(
-        private readonly DriverRepository $driverRepository
+        private DriverRepository $driverRepository
     ) {
         //
     }

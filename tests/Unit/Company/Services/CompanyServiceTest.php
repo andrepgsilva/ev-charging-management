@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
+use App\Modules\Company\Models\Company;
+use Illuminate\Database\Eloquent\Collection;
 use App\Modules\Company\Dtos\CreateCompanyDto;
 use App\Modules\Company\Dtos\UpdateCompanyDto;
-use App\Modules\Company\Models\Company;
 use App\Modules\Company\Services\CompanyService;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 uses(DatabaseMigrations::class);

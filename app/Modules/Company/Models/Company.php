@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 namespace App\Modules\Company\Models;
 
+use Carbon\Carbon;
 use App\Models\BaseModel;
-use App\Modules\Company\Factories\CompanyFactory;
 use App\Modules\Fleet\Models\Driver;
 use App\Modules\Fleet\Models\Vehicle;
-use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Modules\Company\Factories\CompanyFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @property int $id

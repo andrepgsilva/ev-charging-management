@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Modules\Fleet\Models;
 
-use App\Models\BaseModel;
-use App\Models\Company;
 use Carbon\Carbon;
-use Database\Factories\VehicleFactory;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BaseModel;
+use App\Modules\Company\Models\Company;
+use App\Modules\Fleet\Factories\VehicleFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @property int $id
@@ -51,5 +51,10 @@ final class Vehicle extends BaseModel
     public function company(): BelongsTo
     {
         return $this->belongsTo(Company::class);
+    }
+
+    protected static function newFactory(): VehicleFactory
+    {
+        return VehicleFactory::new();
     }
 }

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
+use Illuminate\Testing\TestResponse;
 use App\Modules\Fleet\Models\Vehicle;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Testing\TestResponse;
 
 uses(DatabaseMigrations::class);
 

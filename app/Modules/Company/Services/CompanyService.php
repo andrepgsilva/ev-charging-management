@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace App\Modules\Company\Services;
 
+use Illuminate\Support\Collection;
+use App\Modules\Company\Models\Company;
 use App\Modules\Company\Dtos\CreateCompanyDto;
 use App\Modules\Company\Dtos\UpdateCompanyDto;
-use App\Modules\Company\Models\Company;
 use App\Modules\Company\Repositories\CompanyRepository;
-use Illuminate\Support\Collection;
 
-final class CompanyService
+final readonly class CompanyService
 {
     public function __construct(
-        private readonly CompanyRepository $companyRepository
+        private CompanyRepository $companyRepository
     ) {
         //
     }

@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use App\Modules\Company\Controllers\CompanyController;
 use Illuminate\Support\Facades\Route;
+use App\Modules\Company\Controllers\CompanyController;
 
 Route::middleware('api')->prefix('companies')->group(function () {
     Route::get('/', [CompanyController::class, 'index']);

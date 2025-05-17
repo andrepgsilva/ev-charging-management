@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 
 uses(DatabaseMigrations::class);
 
-test('it can retrieve a driver by id', function () {
+it('it can retrieve a driver by id', function () {
     $driver = Driver::factory()->createOne();
 
     /** @var DriverRepository */
@@ -20,7 +20,7 @@ test('it can retrieve a driver by id', function () {
         ->and($retrievedDriver->id)->toBe($driver->id);
 });
 
-test('it can create a new driver', function () {
+it('it can create a new driver', function () {
     $data = [
         'name' => 'Test Driver',
         'email' => 'test@example.com',
@@ -37,7 +37,7 @@ test('it can create a new driver', function () {
         ->and($createdDriver->email)->toBe($data['email']);
 });
 
-test('it can update an existing driver', function () {
+it('it can update an existing driver', function () {
     $driver = Driver::factory()->createOne();
 
     $updateData = [
@@ -53,7 +53,7 @@ test('it can update an existing driver', function () {
         ->and($updatedDriver->name)->toBe($updateData['name']);
 });
 
-test('it cannot update a driver that does not exist', function () {
+it('it cannot update a driver that does not exist', function () {
     Driver::factory()->createOne();
 
     $updateData = [
@@ -68,7 +68,7 @@ test('it cannot update a driver that does not exist', function () {
         ->toBeNull();
 });
 
-test('it can delete a driver', function () {
+it('it can delete a driver', function () {
     $driver = Driver::factory()->createOne();
 
     /** @var DriverRepository */
@@ -79,7 +79,7 @@ test('it can delete a driver', function () {
     expect(Driver::find($driver->id))->toBeNull();
 });
 
-test('it cannot delete a driver that does not exist', function () {
+it('it cannot delete a driver that does not exist', function () {
     /** @var DriverRepository */
     $repository = app(DriverRepository::class);
     $deleted = $repository->delete(-1);
@@ -87,7 +87,7 @@ test('it cannot delete a driver that does not exist', function () {
     expect($deleted)->toBeFalse();
 });
 
-test('it can retrieve all drivers', function () {
+it('it can retrieve all drivers', function () {
     $drivers = Driver::factory()->count(5)->create();
 
     /** @var DriverRepository */
