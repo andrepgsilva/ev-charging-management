@@ -10,7 +10,6 @@ uses(DatabaseMigrations::class);
 it('can get all companies', function () {
     Company::factory()->count(2)->create();
 
-    /** @var TestResponse */
     $response = $this->get('/api/companies');
 
     $response->assertStatus(200);
@@ -33,7 +32,6 @@ it('can get all companies', function () {
 it('can get a single company', function () {
     Company::factory()->count(2)->create();
 
-    /** @var TestResponse */
     $response = $this->get('/api/companies/2');
 
     $response->assertStatus(200);
@@ -54,7 +52,6 @@ it('can get a single company', function () {
 it('cannot get a single company', function () {
     Company::factory()->createOne();
 
-    /** @var TestResponse */
     $response = $this->get('/api/companies/2');
 
     $response->assertStatus(404);
@@ -65,7 +62,6 @@ it('cannot get a single company', function () {
 });
 
 it('can create a company', function () {
-    /** @var TestResponse */
     $response = $this->postJson('/api/companies', [
         'name' => 'Test Company',
         'email' => 'example@example.com',
@@ -90,7 +86,6 @@ it('can create a company', function () {
 });
 
 it('cannot create a company without email', function () {
-    /** @var TestResponse */
     $response = $this->postJson('/api/companies', [
         'name' => 'Test Company',
         'email' => '',
@@ -110,7 +105,6 @@ it('cannot create a company without email', function () {
 it('can delete a company', function () {
     Company::factory()->count(2)->create();
 
-    /** @var TestResponse */
     $response = $this->deleteJson('/api/companies/2');
 
     $response->assertStatus(200);
@@ -123,7 +117,6 @@ it('can delete a company', function () {
 it('cannot delete a company with id that does not exist', function () {
     Company::factory()->count(1)->create();
 
-    /** @var TestResponse */
     $response = $this->deleteJson('/api/companies/2');
 
     $response->assertStatus(404);
@@ -136,7 +129,6 @@ it('cannot delete a company with id that does not exist', function () {
 it('can update a company', function () {
     Company::factory()->createOne();
 
-    /** @var TestResponse */
     $response = $this->putJson('/api/companies/1', [
         'name' => 'Updated Company',
         'email' => 'exampleupdated@example.com',
@@ -153,7 +145,6 @@ it('can update a company', function () {
 it('cannot update a company', function () {
     Company::factory()->createOne();
 
-    /** @var TestResponse */
     $response = $this->putJson('/api/companies/2', [
         'name' => 'Updated Company',
         'email' => 'a@example.com',
