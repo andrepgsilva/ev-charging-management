@@ -22,3 +22,4 @@ yarn-error.log
 /.nova
 /.zed
 postgres_data
+.vscode

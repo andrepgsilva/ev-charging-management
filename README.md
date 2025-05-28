@@ -9,10 +9,10 @@ Built with **Laravel**, **PostgreSQL**, and **Docker**, the project provides a p
 
 ## 🚀 Tech Stack
 
-- PHP 8.x
-- Laravel 11
+- PHP 8.3
+- Laravel 12
 - PostgreSQL
-- Docker + Docker Compose
+- Docker
 - Pest (testing)
 - PHPStan (static analysis)
 - Laravel Pint (code style)
@@ -30,45 +30,29 @@ cd ev-charging-backend
 ```
 
 ### General Configuration
-#### Copy the .env.example and Create Your Own .env
+#### If you want to manually install PHP and Xdebug, you can use this gist:
+[Manual Installation](https://gist.github.com/andrepgsilva/051eae5ca040396912407c7dd7fe9295)
+#### Copy the .env.example and create your own .env and generate a new encryption key:
 ``` bash
 cp .env.example .env
+php artisan key:generate
 ```
-Get the database env variables on docker-compose.yaml and use to configure your env.
 
 #### Start Containers
-```bash docker-compose up -d --build ```
+``` bash 
+docker-compose up -d --build 
+```
 #### Install PHP Dependencies Inside the Container
 ``` bash
-docker exec -it app composer install
+docker-compose exec app composer install
 ```
-#### Generate Application Key
+#### Run Database Migrations
 ``` bash
-docker exec -it app php artisan key:generate
+docker-compose exec app php artisan migrate
 ```
-
-#### Run database migrations
-``` bash
-docker exec -it app php artisan migrate
-```
-
-### WSL Config
-The project already has a VS Code configuration to run with Xdebug. If you are using Docker with Windows + WSL you will probably need to do a post forward, so Xdebug can work correctly.
-
-**Run Powershell as administrator:** 
-``` Bash
-netsh interface portproxy set v4tov4 listenport=9000 listenaddress=0.0.0.0 connectport=9000 connectaddress=YOUR_HOST_ADDRESS
-```
-Your host address can be found using the command below:
-``` Bash
-wsl hostname -I
-```
-#### PostgreSQL
-The host address will be the DB_HOST for Postgres. It need to be added on your .env.
-Other configuration like, port, database name and password can be found - or changed - on docker-compose.yaml.
 
 ### 🧪 Code Quality & Testing
-#### Run tests
+#### Run Tests
 ``` bash
 docker-compose exec app composer test:unit
 ```
