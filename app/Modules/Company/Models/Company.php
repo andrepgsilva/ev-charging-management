@@ -13,32 +13,19 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
- * @property int $id
- * @property string $name
- * @property string $email
- * @property string $tax_number
- * @property string|null $phone
- * @property string|null $address
- * @property Carbon|null $created_at
- * @property Carbon|null $updated_at
+ * @property-read int $id
+ * @property-read string $name
+ * @property-read string $email
+ * @property-read string $tax_number
+ * @property-read string|null $phone
+ * @property-read string|null $address
+ * @property-read Carbon|null $created_at
+ * @property-read Carbon|null $updated_at
  */
 final class Company extends BaseModel
 {
     /** @use HasFactory<CompanyFactory> */
     use HasFactory;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'tax_number',
-        'phone',
-        'address',
-    ];
 
     /** @return HasMany<Driver, $this> */
     public function drivers(): HasMany

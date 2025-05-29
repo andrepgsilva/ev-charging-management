@@ -20,7 +20,7 @@ final class UpdateDriverRequest extends FormRequest
     {
         return [
             'name' => 'nullable|string|min:1|max:255',
-            'email' => 'nullable|email|min:5|max:255|unique:companies,email',
+            'email' => 'nullable|email|min:5|max:255|unique:drivers,email',
             'phone' => 'nullable|string|min:4|max:255',
             'company_id' => 'nullable|int|min:1|exists:companies,id',
         ];

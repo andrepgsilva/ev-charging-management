@@ -24,7 +24,7 @@ final class UpdateVehicleRequest extends FormRequest
             'plate_number' => 'nullable|string|min:4|max:255|unique:vehicles,plate_number',
             'battery_capacity_kwh' => 'nullable|string|min:1|max:255',
             'company_id' => 'nullable|int|min:1|exists:companies,id',
-            'driver_id' => 'nullable|int|min:1|exists:companies,id',
+            'driver_id' => 'nullable|int|min:1|exists:drivers,id',
         ];
     }
 }
