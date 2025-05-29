@@ -13,7 +13,7 @@ abstract class BaseModel extends Model
      * Retrieve the model for a bound value.
      *
      * @param  mixed  $value
-     * @param  string|null  $field
+     * @param  ?string  $field
      * @return Model
      */
     final public function resolveRouteBinding($value, $field = null) // @pest-ignore-type

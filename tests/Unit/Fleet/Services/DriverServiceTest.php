@@ -15,7 +15,7 @@ it('retrieves all drivers', function () {
     Driver::factory()->createOne();
     Driver::factory()->createOne();
 
-    /** @var DriverService */
+    /** @var DriverService $service */
     $service = app(DriverService::class);
 
     $drivers = $service->getAll();
@@ -27,7 +27,7 @@ it('retrieves all drivers', function () {
 it('retrieves a driver by id', function () {
     Driver::factory()->create(['name' => 'Driver A']);
 
-    /** @var DriverService */
+    /** @var DriverService $service */
     $service = app(DriverService::class);
 
     $driver = $service->getById(1);
@@ -37,18 +37,27 @@ it('retrieves a driver by id', function () {
 });
 
 it('creates a driver', function () {
-    /** @var Driver */
+    /** @var Driver $driver */
     $driver = Driver::factory()->makeOne();
 
     unset($driver->id);
     unset($driver->created_at);
     unset($driver->updated_at);
-    $driver->email = 'pest@example.com';
 
     $dto = new CreateDriverDto();
-    $dto->fillFromArray($driver->toArray());
+    /**
+     * @var array{
+     *  name: string,
+     *  email: string,
+     *  tax_number: string,
+     *  phone?: string,
+     *  address?: string,
+     * } $data
+     */
+    $data = $driver->toArray();
+    $dto->fillFromArray($data);
 
-    /** @var DriverService */
+    /** @var DriverService $service */
     $service = app(DriverService::class);
 
     $driver = $service->create($dto);
@@ -57,7 +66,7 @@ it('creates a driver', function () {
 });
 
 it('updates a driver', function () {
-    /** @var Driver */
+    /** @var Driver $driver */
     $driver = Driver::factory()->createOne();
 
     $dto = new UpdateDriverDto();
@@ -66,7 +75,7 @@ it('updates a driver', function () {
     $dto->email = $driver->email;
     $dto->phone = $driver->phone;
 
-    /** @var DriverService */
+    /** @var DriverService $service */
     $service = app(DriverService::class);
 
     $driverUpdated = $service->update(1, $dto);

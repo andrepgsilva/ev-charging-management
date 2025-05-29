@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\ChargingInfrastructure\ChargingPool\Factories;
+namespace App\Modules\ChargingInfrastructure\Factories;
 
 use App\Modules\Company\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Modules\ChargingInfrastructure\ChargingPool\Models\ChargingPool;
-use App\Modules\ChargingInfrastructure\ChargingPool\Enums\ChargingPoolEnum;
+use App\Modules\ChargingInfrastructure\Models\ChargingPool;
+use App\Modules\ChargingInfrastructure\Enums\ChargingPoolEnum;
 
 /**
  * @extends Factory<ChargingPool>
@@ -38,10 +38,10 @@ final class ChargingPoolFactory extends Factory
             'latitude' => $this->faker->optional()->latitude(),
             'longitude' => $this->faker->optional()->longitude(),
             'type' => $this->faker->optional()->randomElement([
-                ChargingPoolEnum::PUBLIC,
-                ChargingPoolEnum::PRIVATE,
-                ChargingPoolEnum::COMPANY,
-                ChargingPoolEnum::CONDOMINIUM,
+                ChargingPoolEnum::PUBLIC->value,
+                ChargingPoolEnum::PRIVATE->value,
+                ChargingPoolEnum::COMPANY->value,
+                ChargingPoolEnum::CONDOMINIUM->value,
             ]),
             'description' => $this->faker->optional()->text(),
             'company_id' => Company::factory()->createOne()->id,

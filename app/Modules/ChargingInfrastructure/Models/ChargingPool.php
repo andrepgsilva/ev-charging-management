@@ -2,13 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\ChargingInfrastructure\ChargingPool\Models;
+namespace App\Modules\ChargingInfrastructure\Models;
 
 use App\Models\BaseModel;
 use App\Modules\Company\Models\Company;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Modules\ChargingInfrastructure\ChargingPool\Factories\ChargingPoolFactory;
+use App\Modules\ChargingInfrastructure\Factories\ChargingPoolFactory;
+use Illuminate\Support\Carbon;
 
 /**
  * @property-read int $id
@@ -23,6 +24,9 @@ use App\Modules\ChargingInfrastructure\ChargingPool\Factories\ChargingPoolFactor
  * @property-read ?string $type
  * @property-read ?string $description
  * @property-read ?int $company_id
+ * @property-read ?Company $company
+ * @property-read ?Carbon $created_at
+ * @property-read ?Carbon $updated_at
  */
 final class ChargingPool extends BaseModel
 {

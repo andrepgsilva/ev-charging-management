@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use App\Modules\Company\Models\Company;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use App\Modules\ChargingInfrastructure\ChargingPool\Models\ChargingPool;
+use App\Modules\ChargingInfrastructure\Models\ChargingPool;
 
 uses(DatabaseMigrations::class);
 
@@ -30,7 +30,7 @@ it('to array', function () {
         ]);
 });
 
-it('if charging pool belong to a company', function () {
+it('if charging pool belongs to a company', function () {
     $chargingPool = ChargingPool::factory()->createOne();
 
     expect($chargingPool->company)->toBeInstanceOf(Company::class);

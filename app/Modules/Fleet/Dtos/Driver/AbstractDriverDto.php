@@ -12,8 +12,8 @@ abstract class AbstractDriverDto
      * @use DtoTrait<array{
      *     name?: string,
      *     email?: string,
-     *     phone?: string|null,
-     *     company_id?: int|null
+     *     phone?: string,
+     *     company_id?: int
      * }>
      */
     use DtoTrait;
@@ -22,8 +22,8 @@ abstract class AbstractDriverDto
      * @return array{
      *     name?: string,
      *     email?: string,
-     *     phone?: string|null,
-     *     company_id?: int|null
+     *     phone?: string,
+     *     company_id?: int
      * }
      */
     final public function toArray(): array
@@ -35,8 +35,8 @@ abstract class AbstractDriverDto
      * @param  array{
      *     name?: string,
      *     email?: string,
-     *     phone?: string|null,
-     *     company_id?: int|null
+     *     phone?: string,
+     *     company_id?: int
      * } $data
      */
     final public function fillFromArray(array $data): void

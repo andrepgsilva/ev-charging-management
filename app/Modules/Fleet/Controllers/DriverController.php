@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Modules\Fleet\Controllers;
 
+use Throwable;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Modules\Fleet\Models\Driver;
@@ -25,6 +26,9 @@ final class DriverController
         //
     }
 
+    /**
+     * @throws Throwable
+     */
     public function index(): JsonResponse
     {
         $allDrivers = $this->driverService->getAll();
@@ -35,6 +39,9 @@ final class DriverController
         );
     }
 
+    /**
+     * @throws Throwable
+     */
     public function show(Driver $driver): JsonResponse
     {
         return $this->successResponse(
@@ -45,6 +52,8 @@ final class DriverController
 
     /**
      * @param  CreateDriverRequest&Request  $createDriverRequest
+     *
+     * @throws Throwable
      */
     public function store(CreateDriverRequest $createDriverRequest): JsonResponse
     {
@@ -57,7 +66,7 @@ final class DriverController
          *  tax_number: string,
          *  phone?: string,
          *  address?: string,
-         * }
+         * } $data
          */
         $data = $createDriverRequest->all();
         $createDriverDto->fillFromArray($data);
@@ -73,6 +82,8 @@ final class DriverController
 
     /**
      * @param  UpdateDriverRequest&Request  $updateDriverRequest
+     *
+     * @throws Throwable
      */
     public function update(
         Driver $driver,
@@ -86,7 +97,7 @@ final class DriverController
          *  tax_number: string,
          *  phone?: string,
          *  address?: string,
-         * }
+         * } $data
          */
         $data = $updateDriverRequest->all();
         $updateDriverDto->fillFromArray($data);

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\ChargingInfrastructure\ChargingPool\Enums;
+namespace App\Modules\ChargingInfrastructure\Enums;
 
 enum ChargingPoolEnum: string
 {

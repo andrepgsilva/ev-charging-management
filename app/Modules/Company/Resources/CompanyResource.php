@@ -12,8 +12,8 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @property string $name
  * @property string $email
  * @property string $tax_number
- * @property string|null $phone
- * @property string|null $address
+ * @property ?string $phone
+ * @property ?string $address
  */
 final class CompanyResource extends JsonResource
 {

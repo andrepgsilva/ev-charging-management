@@ -17,8 +17,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property-read string $name
  * @property-read string $email
  * @property-read string $tax_number
- * @property-read string|null $phone
- * @property-read string|null $address
+ * @property-read ?string $phone
+ * @property-read ?string $address
  * @property-read Carbon|null $created_at
  * @property-read Carbon|null $updated_at
  */

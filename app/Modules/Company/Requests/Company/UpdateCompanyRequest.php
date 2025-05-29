@@ -20,8 +20,8 @@ final class UpdateCompanyRequest extends FormRequest
     {
         return [
             'name' => 'nullable|string|min:1|max:255',
-            'email' => 'nullable|email|min:5|max:255|unique:companies,email',
-            'tax_number' => 'nullable|string|min:9|max:255|unique:companies,tax_number',
+            'email' => 'nullable|email|min:5|max:255',
+            'tax_number' => 'nullable|string|min:9|max:255',
             'phone' => 'nullable|string|min:4|max:255',
             'address' => 'nullable|string|min:3|max:255',
         ];

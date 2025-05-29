@@ -13,8 +13,8 @@ abstract class AbstractCompanyDto
      *     name?: string,
      *     email?: string,
      *     tax_number?: string,
-     *     phone?: string|null,
-     *     address?: string|null
+     *     phone: string,
+     *     address: string
      * }>
      */
     use DtoTrait;
@@ -24,8 +24,8 @@ abstract class AbstractCompanyDto
      *  name?: string,
      *  email?: string,
      *  tax_number?: string,
-     *  phone?: string|null,
-     *  address?: string|null
+     *  phone: string,
+     *  address: string
      * }
      */
     final public function toArray(): array

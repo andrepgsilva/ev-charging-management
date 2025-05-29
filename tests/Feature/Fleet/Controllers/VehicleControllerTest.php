@@ -11,7 +11,7 @@ uses(DatabaseMigrations::class);
 it('can get all vehicles', function () {
     Vehicle::factory()->count(2)->create();
 
-    /** @var TestResponse */
+    /** @var TestResponse $response */
     $response = $this->get('/api/vehicles');
 
     $response->assertStatus(200);
@@ -34,7 +34,7 @@ it('can get all vehicles', function () {
 it('can get a single vehicle', function () {
     Vehicle::factory()->count(2)->create();
 
-    /** @var TestResponse */
+    /** @var TestResponse $response */
     $response = $this->get('/api/vehicles/2');
 
     $response->assertStatus(200);
@@ -55,7 +55,7 @@ it('can get a single vehicle', function () {
 it('cannot get a single vehicle', function () {
     Vehicle::factory()->createOne();
 
-    /** @var TestResponse */
+    /** @var TestResponse $response */
     $response = $this->get('/api/vehicles/2');
 
     $response->assertStatus(404);
@@ -66,7 +66,7 @@ it('cannot get a single vehicle', function () {
 });
 
 it('can create a vehicle', function () {
-    /** @var TestResponse */
+    /** @var TestResponse $response */
     $response = $this->postJson('/api/vehicles', [
         'make' => 'Best Maker',
         'model' => 'make xyz',
@@ -89,7 +89,7 @@ it('can create a vehicle', function () {
 });
 
 it('cannot create a vehicle without plate number', function () {
-    /** @var TestResponse */
+    /** @var TestResponse $response */
     $response = $this->postJson('/api/vehicles', [
         'make' => 'Test Maker',
         'model' => 'Test Model',
@@ -107,7 +107,7 @@ it('cannot create a vehicle without plate number', function () {
 it('can delete a vehicle', function () {
     Vehicle::factory()->count(2)->create();
 
-    /** @var TestResponse */
+    /** @var TestResponse $response */
     $response = $this->deleteJson('/api/vehicles/2');
 
     $response->assertStatus(200);
@@ -120,7 +120,7 @@ it('can delete a vehicle', function () {
 it('cannot delete a vehicle with id that does not exist', function () {
     Vehicle::factory()->count(1)->create();
 
-    /** @var TestResponse */
+    /** @var TestResponse $response */
     $response = $this->deleteJson('/api/vehicles/2');
 
     $response->assertStatus(404);
@@ -133,7 +133,7 @@ it('cannot delete a vehicle with id that does not exist', function () {
 it('can update a vehicle', function () {
     Vehicle::factory()->createOne();
 
-    /** @var TestResponse */
+    /** @var TestResponse $response */
     $response = $this->putJson('/api/vehicles/1', [
         'make' => 'Updated Vehicle Maker',
         'model' => 'Model Updated',
@@ -150,7 +150,7 @@ it('can update a vehicle', function () {
 it('cannot update a vehicle', function () {
     Vehicle::factory()->createOne();
 
-    /** @var TestResponse */
+    /** @var TestResponse $response */
     $response = $this->putJson('/api/vehicles/2', [
         'make' => 'Updated Vehicle Maker',
         'model' => 'Model Updated',
