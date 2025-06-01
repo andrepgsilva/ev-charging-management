@@ -61,12 +61,12 @@ final class ChargingPoolController
 
         /**
          * @var array{
-         *  name?: string,
-         *  address?: string,
-         *  country?: string,
-         *  state?: string,
-         *  city?: string,
-         *  postal_code?: string,
+         *  name: string,
+         *  address: string,
+         *  country: string,
+         *  state: string,
+         *  city: string,
+         *  postal_code: string,
          *  latitude?: string,
          *  longitude?: string,
          *  type?: string,
@@ -98,12 +98,12 @@ final class ChargingPoolController
     ): JsonResponse {
         /**
          * @var array{
-         *  name?: string,
-         *  address?: string,
-         *  country?: string,
-         *  state?: string,
-         *  city?: string,
-         *  postal_code?: string,
+         *  name: string,
+         *  address: string,
+         *  country: string,
+         *  state: string,
+         *  city: string,
+         *  postal_code: string,
          *  latitude?: string,
          *  longitude?: string,
          *  type?: string,

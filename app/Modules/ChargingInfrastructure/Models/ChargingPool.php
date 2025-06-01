@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace App\Modules\ChargingInfrastructure\Models;
 
 use App\Models\BaseModel;
+use Illuminate\Support\Carbon;
 use App\Modules\Company\Models\Company;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Modules\ChargingInfrastructure\Factories\ChargingPoolFactory;
-use Illuminate\Support\Carbon;
 
 /**
  * @property-read int $id

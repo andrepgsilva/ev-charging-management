@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-use App\Modules\ChargingInfrastructure\Dtos\ChargingPool\CreateChargingPoolDto;
-use App\Modules\ChargingInfrastructure\Dtos\ChargingPool\UpdateChargingPoolDto;
+use Illuminate\Support\Collection;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use App\Modules\ChargingInfrastructure\Models\ChargingPool;
 use App\Modules\ChargingInfrastructure\Services\ChargingPoolService;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Support\Collection;
+use App\Modules\ChargingInfrastructure\Dtos\ChargingPool\CreateChargingPoolDto;
+use App\Modules\ChargingInfrastructure\Dtos\ChargingPool\UpdateChargingPoolDto;
 
 uses(DatabaseMigrations::class);
 
