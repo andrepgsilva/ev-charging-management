@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use ReflectionClass;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 abstract class BaseModel extends Model
@@ -21,7 +21,7 @@ abstract class BaseModel extends Model
         $model = parent::resolveRouteBinding($value, $field);
 
         if (is_null($model)) {
-            $modelShortName = (new ReflectionClass($this))->getShortName();
+            $modelShortName = Str::headline(class_basename($this::class));
             $errorMessage = $modelShortName.' Not Found';
 
             if (is_string($value)) {

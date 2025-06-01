@@ -35,7 +35,7 @@ final class ChargingPoolController
 
         return $this->successResponse(
             $allChargingPools->toResourceCollection(ChargingPoolResource::class),
-            'ChargingPools retrieved successfully'
+            'Charging Pools retrieved successfully'
         );
     }
 
@@ -46,7 +46,7 @@ final class ChargingPoolController
     {
         return $this->successResponse(
             $chargingPool->toResource(ChargingPoolResource::class),
-            'ChargingPool retrieved successfully'
+            'Charging Pool retrieved successfully'
         );
     }
 
@@ -81,7 +81,7 @@ final class ChargingPoolController
 
         return $this->successResponse(
             $chargingPool->toResource(ChargingPoolResource::class),
-            'ChargingPool created successfully',
+            'Charging Pool created successfully',
             201
         );
     }
@@ -122,7 +122,7 @@ final class ChargingPoolController
 
         return $this->successResponse(
             $chargingPool->toResource(ChargingPoolResource::class),
-            'ChargingPool created successfully',
+            'Charging Pool created successfully',
             201
         );
     }
@@ -133,7 +133,7 @@ final class ChargingPoolController
 
         return $this->successResponse(
             [],
-            'ChargingPool deleted successfully',
+            'Charging Pool deleted successfully',
             200
         );
     }
