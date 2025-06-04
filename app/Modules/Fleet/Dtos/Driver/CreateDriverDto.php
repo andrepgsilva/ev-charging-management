@@ -12,5 +12,5 @@ final class CreateDriverDto extends AbstractDriverDto
 
     public ?string $phone;
 
-    public ?string $companyId;
+    public ?int $companyId;
 }

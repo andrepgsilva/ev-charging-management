@@ -1,0 +1,18 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Modules\ChargingInfrastructure\Dtos\ChargingPoint;
+
+final class UpdateChargingPointDto extends AbstractChargingPointDto
+{
+    public ?int $chargingPoolId;
+
+    public ?string $label;
+
+    public ?string $vendor;
+
+    public ?string $serial_number;
+
+    public ?string $description;
+}
