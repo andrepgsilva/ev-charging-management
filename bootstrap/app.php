@@ -32,6 +32,10 @@ return Application::configure(basePath: dirname(__DIR__))
             Route::middleware('api')
                 ->prefix('api')
                 ->group(base_path('routes/charging-pool.php'));
+
+            Route::middleware('api')
+                ->prefix('api')
+                ->group(base_path('routes/charging-point.php'));
         },
         commands: __DIR__.'/../routes/console.php',
     )
