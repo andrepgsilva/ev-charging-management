@@ -20,8 +20,8 @@ it('retrieves all chargingPoints', function () {
 
     $chargingPoints = $service->getAll();
 
-    expect($chargingPoints)->toHaveCount(2);
-    expect($chargingPoints)->toBeInstanceOf(Collection::class);
+    expect($chargingPoints)->toHaveCount(2)
+        ->and($chargingPoints)->toBeInstanceOf(Collection::class);
 });
 
 it('retrieves a chargingPoint by id', function () {
@@ -30,10 +30,11 @@ it('retrieves a chargingPoint by id', function () {
     /** @var ChargingPointService $service */
     $service = app(ChargingPointService::class);
 
+    /** @var ChargingPoint $chargingPoint */
     $chargingPoint = $service->getById(1);
 
-    expect($chargingPoint)->not->toBeNull();
-    expect($chargingPoint->label)->toBe('ChargingPoint A');
+    expect($chargingPoint)->not->toBeNull()
+        ->and($chargingPoint->label)->toBe('ChargingPoint A');
 });
 
 it('creates a chargingPoint', function () {
@@ -51,7 +52,7 @@ it('creates a chargingPoint', function () {
      * vendor?: string,
      * serial_number?: string,
      * description?: string,
-     * charging_pool_id?: string
+     * charging_pool_id?: int
      * } $data
      */
     $data = $chargingPoint->toArray();
@@ -76,10 +77,12 @@ it('updates a chargingPoint', function () {
     /** @var ChargingPointService $service */
     $service = app(ChargingPointService::class);
 
+    /** @var ChargingPoint $chargingPointUpdated */
     $chargingPointUpdated = $service->update(1, $dto);
 
-    expect($chargingPoint)->not->toBeNull();
-    expect($chargingPointUpdated->label)->toBe($chargingPoint->label.' updated label');
+    expect($chargingPoint)->not->toBeNull()
+        ->and($chargingPointUpdated->label)
+        ->toBe($chargingPoint->label.' updated label');
 });
 
 it('cannot update a chargingPoint', function () {
@@ -88,7 +91,7 @@ it('cannot update a chargingPoint', function () {
 
     $dto = new UpdateChargingPointDto();
 
-    $dto->name = $chargingPoint->name.' updated name';
+    $dto->label = $chargingPoint->label.' updated label';
 
     /** @var ChargingPointService $service */
     $service = app(ChargingPointService::class);
@@ -99,10 +102,9 @@ it('cannot update a chargingPoint', function () {
 })->only();
 
 it('deletes a chargingPoint', function () {
-    /** @var ChargingPoint */
     ChargingPoint::factory()->createOne();
 
-    /** @var ChargingPointService */
+    /** @var ChargingPointService $service */
     $service = app(ChargingPointService::class);
 
     $isDeleted = $service->delete(1);
@@ -111,10 +113,9 @@ it('deletes a chargingPoint', function () {
 });
 
 it('cannot delete a chargingPoint', function () {
-    /** @var ChargingPoint */
     ChargingPoint::factory()->createOne();
 
-    /** @var ChargingPointService */
+    /** @var ChargingPointService $service */
     $service = app(ChargingPointService::class);
 
     $isDeleted = $service->delete(99);
