@@ -28,8 +28,8 @@ final class ChargingPointFactory extends Factory
     public function definition(): array
     {
         return [
-            'label' => $this->faker->words(2),
-            'vendor' => $this->faker->words(1),
+            'label' => $this->faker->sentence(2),
+            'vendor' => $this->faker->sentence(2),
             'serial_number' => $this->faker->numerify('######-###'),
             'description' => $this->faker->text(),
             'charging_pool_id' => ChargingPool::factory()->createOne()->id,

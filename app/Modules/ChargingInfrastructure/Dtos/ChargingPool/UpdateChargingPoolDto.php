@@ -26,5 +26,5 @@ final class UpdateChargingPoolDto extends AbstractChargingPoolDto
 
     public ?string $description;
 
-    public ?string $companyId;
+    public ?int $companyId;
 }

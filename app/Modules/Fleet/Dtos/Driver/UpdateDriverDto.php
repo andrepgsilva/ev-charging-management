@@ -12,5 +12,5 @@ final class UpdateDriverDto extends AbstractDriverDto
 
     public ?string $phone;
 
-    public ?string $companyId;
+    public ?int $companyId;
 }
