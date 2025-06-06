@@ -12,7 +12,7 @@ final class CreateChargingPointDto extends AbstractChargingPointDto
 
     public ?string $vendor;
 
-    public ?string $serial_number;
+    public ?string $serialNumber;
 
     public ?string $description;
 }
