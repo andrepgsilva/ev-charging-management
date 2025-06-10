@@ -10,13 +10,13 @@ return new class extends Migration
     public function up(): void
     {
         DB::statement('
-            CREATE TABLE charging_sessions_2025_05 PARTITION OF charging_sessions
-            FOR VALUES FROM (\'2025-05-01\') TO (\'2025-06-01\');
+            CREATE TABLE charging_sessions_2025_06 PARTITION OF charging_sessions
+            FOR VALUES FROM (\'2025-06-01\') TO (\'2025-07-01\');
         ');
     }
 
     public function down(): void
     {
-        DB::statement('DROP TABLE IF EXISTS charging_sessions_2025_05;');
+        DB::statement('DROP TABLE IF EXISTS charging_sessions_2025_06;');
     }
 };
