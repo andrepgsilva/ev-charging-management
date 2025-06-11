@@ -6,10 +6,9 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Modules\ChargingInfrastructure\Models\ChargingPoint;
-use App\Modules\ChargingInfrastructure\Models\ChargingPool;
-use App\Modules\Fleet\Models\Vehicle;
 use Illuminate\Database\Seeder;
+use App\Modules\Fleet\Models\Vehicle;
+use App\Modules\ChargingInfrastructure\Models\ChargingPoint;
 
 final class DatabaseSeeder extends Seeder
 {
