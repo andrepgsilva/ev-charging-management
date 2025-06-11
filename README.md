@@ -62,7 +62,7 @@ docker-compose exec app composer test:types
 ```
 #### Fix Code Style
 ``` bash
-docker-compose exec app composer test:lint
+docker-compose exec app composer test:lint-fix
 ```
 
 #### You Can Use All Commands at Once
