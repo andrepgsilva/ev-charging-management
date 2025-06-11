@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -40,6 +41,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::statement('DROP TABLE charging_sessions;');
+        Schema::dropIfExists('charging_sessions');
     }
 };

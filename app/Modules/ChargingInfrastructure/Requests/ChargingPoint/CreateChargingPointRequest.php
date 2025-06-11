@@ -20,7 +20,7 @@ final class CreateChargingPointRequest extends FormRequest
     {
         return [
             'charging_pool_id' => 'nullable|integer',
-            'label' => 'string|min:1|max:255',
+            'label' => 'required|string|min:1|max:255',
             'vendor' => 'nullable|string|min:1|max:255',
             'serial_number' => 'nullable|string|min:1|max:255',
             'description' => 'nullable|string|min:1|max:255',

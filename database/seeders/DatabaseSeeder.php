@@ -6,6 +6,9 @@ namespace Database\Seeders;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Modules\ChargingInfrastructure\Models\ChargingPoint;
+use App\Modules\ChargingInfrastructure\Models\ChargingPool;
+use App\Modules\Fleet\Models\Vehicle;
 use Illuminate\Database\Seeder;
 
 final class DatabaseSeeder extends Seeder
@@ -21,5 +24,8 @@ final class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        Vehicle::factory()->count(1)->create();
+        ChargingPoint::factory()->count(1)->create();
     }
 }

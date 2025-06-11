@@ -33,6 +33,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('charging_sessions');
         Schema::dropIfExists('vehicles');
     }
 };
