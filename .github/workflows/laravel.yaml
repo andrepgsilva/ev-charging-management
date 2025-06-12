@@ -2,9 +2,15 @@ name: Laravel CI
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
+      - development
+      - releases/**
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
+      - development
+      - releases/**
 
 jobs:
   laravel-tests:
@@ -32,35 +38,18 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: '8.3'
-          extensions: mbstring, bcmath, pdo_pgsql
-          coverage: none
 
       - name: Install Composer dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
 
-      - name: Copy .env
+      - name: Copy .env example to .env
         run: cp .env.example .env
 
       - name: Generate app key
         run: php artisan key:generate
 
-      - name: Set up database config
-        run: |
-          sed -i 's/DB_CONNECTION=.*/DB_CONNECTION=pgsql/' .env
-          sed -i 's/DB_HOST=.*/DB_HOST=127.0.0.1/' .env
-          sed -i 's/DB_PORT=.*/DB_PORT=5432/' .env
-          sed -i 's/DB_DATABASE=.*/DB_DATABASE=laravel/' .env
-          sed -i 's/DB_USERNAME=.*/DB_USERNAME=laravel/' .env
-          sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=password/' .env
-
-      - name: Wait for PostgreSQL
-        run: |
-          until pg_isready -h 127.0.0.1 -p 5432 -U laravel; do
-            sleep 1
-          done
-
       - name: Run migrations
-        run: php artisan migrate --force
+        run: php artisan migrate
 
       - name: Run tests
         run: composer test
