@@ -6,6 +6,7 @@ use Monolog\Handler\NullHandler;
 use Monolog\Handler\StreamHandler;
 use Monolog\Handler\SyslogUdpHandler;
 use Monolog\Processor\PsrLogMessageProcessor;
+use Monolog\Formatter\GoogleCloudLoggingFormatter;
 
 return [
 
@@ -105,6 +106,16 @@ return [
             ],
             'formatter' => env('LOG_STDERR_FORMATTER'),
             'processors' => [PsrLogMessageProcessor::class],
+        ],
+
+        'google' => [
+            'driver' => 'monolog',
+            'level' => env('LOG_LEVEL', 'debug'),
+            'handler' => StreamHandler::class,
+            'formatter' => GoogleCloudLoggingFormatter::class,
+            'with' => [
+                'stream' => 'php://stderr',
+            ],
         ],
 
         'syslog' => [

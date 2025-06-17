@@ -5,12 +5,13 @@ on:
     branches:
       - main
       - development
-      - releases/**
+      - release/**
   pull_request:
     branches:
       - main
       - development
-      - releases/**
+      - release/**
+  workflow_dispatch:
 
 env:
   GOOGLE_PROJECT_ID: ${{ vars.GOOGLE_PROJECT_ID }}
@@ -102,9 +103,16 @@ jobs:
           service: ${{ env.GOOGLE_CLOUD_RUN_SERVICE_NAME }}
           region: ${{ env.GOOGLE_CLOUD_RUN_REGION }}
           image: ${{ env.GOOGLE_ARTIFACT_REGISTRY_LOCATION }}-docker.pkg.dev/${{ env.GOOGLE_PROJECT_ID }}/${{ env.GOOGLE_ARTIFACT_REGISTRY_REPOSITORY }}/${{ env.GOOGLE_CLOUD_RUN_SERVICE_NAME }}:${{ github.sha }}
-          #  env_vars: |
-          #  NODE_ENV=production
-          #  TOKEN_EXPIRE=6400
+          env_vars: |-
+            DB_CONNECTION=pgsql
+            DB_HOST=${{ secrets.DB_HOST }}
+            DB_PORT=${{ secrets.DB_PORT }}
+            DB_DATABASE=${{ secrets.DB_DATABASE }}
+            DB_USERNAME=${{ secrets.DB_USERNAME }}
+            DB_PASSWORD=${{ secrets.DB_PASSWORD }}
+            LOG_STACK=${{ vars.LOG_STACK }}
+            APP_ENV=${{ vars.APP_ENV }}
+            APP_DEBUG=${{ vars.APP_DEBUG }}
 
       - name: Show Output
         run: echo ${{ steps.deploy.outputs.url }}
