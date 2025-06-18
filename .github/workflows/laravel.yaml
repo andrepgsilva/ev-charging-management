@@ -11,6 +11,7 @@ on:
       - main
       - development
       - release/**
+  workflow_dispatch:
 
 env:
   GOOGLE_PROJECT_ID: ${{ vars.GOOGLE_PROJECT_ID }}
