@@ -69,6 +69,13 @@ docker-compose exec app composer test:lint-fix
 ``` bash
 docker-compose exec app composer test
 ```
+## Continuous Integration and Deployment
+Built with GitHub Actions and Google Cloud Platform (Cloud Run, Artifact Registry), featuring:
+- Multi-environment support (development/staging/production)
+- Automated testing with PEST
+- Code quality checks:
+    - PHPStan for static analysis
+    - Pint for code styling
 
 ## Strategies
 ### Charging Sessions Table Partitioning
