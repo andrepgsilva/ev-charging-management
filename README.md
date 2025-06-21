@@ -3,7 +3,7 @@
 This is a backend system for managing Electric Vehicle (EV) charging sessions for companies.  
 It allows companies to manage their vehicles and drivers, track charging sessions, and generate consumption reports.
 
-Built with **Laravel**, **PostgreSQL**, and **Docker**, the project provides a production-like environment for scalable backend development.
+Built with **Laravel**, **PostgreSQL**, **Google Cloud** and **Docker**, the project provides a production-like environment for scalable backend development.
 
 ---
 
@@ -79,7 +79,7 @@ Built with GitHub Actions and Google Cloud Platform (Cloud Run, Artifact Registr
 
 ## Strategies
 ### Charging Sessions Table Partitioning
-**Why Partition?**
+**Why Partitioning?**
 
 The charging_sessions table is expected to grow rapidly, with millions of records per year as the platform scales. To ensure high performance for queries and maintenance, we use PostgreSQL native table partitioning by month.
 
@@ -87,7 +87,7 @@ The charging_sessions table is expected to grow rapidly, with millions of record
 
 - Performance: Queries for recent sessions (e.g., “last month’s usage”) only scan relevant partitions, not the entire table.
 - Maintenance: Old data can be dropped instantly by removing a partition, making retention policies efficient.
-- Scalability: Each partition remains a manageable size, avoiding full-table scans and bloated indexes.
+- Scalability: Each partition remains a manageable size, avoiding full-table scans.
 
 ### 🧑‍💻 Author
 Made with ❤️ by Andre Silva
