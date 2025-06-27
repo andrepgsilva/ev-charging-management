@@ -69,7 +69,7 @@ final class CompanyController
          * } $data
          */
         $data = $createCompanyRequest->all();
-        $createCompanyDto->fillFromArray($data);
+        $createCompanyDto->fill($data);
 
         $company = $this->companyService->create($createCompanyDto);
 
@@ -100,7 +100,7 @@ final class CompanyController
          * } $data
          */
         $data = $updateCompanyRequest->all();
-        $updateCompanyDto->fillFromArray($data);
+        $updateCompanyDto->fill($data);
 
         /** @var Company $company */
         $company = $this->companyService->update(

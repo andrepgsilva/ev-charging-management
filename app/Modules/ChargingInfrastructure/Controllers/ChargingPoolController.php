@@ -75,7 +75,7 @@ final class ChargingPoolController
          * } $data
          */
         $data = $createChargingPoolRequest->all();
-        $createChargingPoolDto->fillFromArray($data);
+        $createChargingPoolDto->fill($data);
 
         $chargingPool = $this->chargingPoolService->create($createChargingPoolDto);
 
@@ -112,7 +112,7 @@ final class ChargingPoolController
          * } $data
          */
         $data = $updateChargingPoolRequest->all();
-        $updateChargingPoolDto->fillFromArray($data);
+        $updateChargingPoolDto->fill($data);
 
         /** @var ChargingPool $chargingPool */
         $chargingPool = $this->chargingPoolService->update(

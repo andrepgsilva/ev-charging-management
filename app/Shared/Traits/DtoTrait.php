@@ -14,7 +14,7 @@ trait DtoTrait
     /**
      * @return TData
      */
-    protected function convertToArray(bool $transformCamelCaseToSnakeCase = false): array
+    public function toArray(bool $transformCamelCaseToSnakeCase = true): array
     {
         $propertiesAndValues = get_object_vars($this);
 
@@ -33,7 +33,7 @@ trait DtoTrait
     /**
      * @param  array<string, mixed>  $data
      */
-    protected function fill(array $data, bool $transformSnakeCaseToCamelCase = false): void
+    public function fill(array $data, bool $transformSnakeCaseToCamelCase = true): void
     {
         if ($transformSnakeCaseToCamelCase) {
             $data = array_combine(

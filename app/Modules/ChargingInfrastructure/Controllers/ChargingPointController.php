@@ -69,7 +69,7 @@ final class ChargingPointController
          * } $data
          */
         $data = $createChargingPointRequest->all();
-        $createChargingPointDto->fillFromArray($data);
+        $createChargingPointDto->fill($data);
 
         $chargingPoint = $this->chargingPointService->create($createChargingPointDto);
 
@@ -100,7 +100,7 @@ final class ChargingPointController
          * } $data
          */
         $data = $updateChargingPointRequest->all();
-        $updateChargingPointDto->fillFromArray($data);
+        $updateChargingPointDto->fill($data);
 
         /** @var ChargingPoint $chargingPoint */
         $chargingPoint = $this->chargingPointService->update(

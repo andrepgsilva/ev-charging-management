@@ -72,7 +72,7 @@ final class ChargingSessionController
          * } $data
          */
         $data = $createChargingSessionRequest->all();
-        $createChargingSessionDto->fillFromArray($data);
+        $createChargingSessionDto->fill($data);
 
         $chargingSession = $this->chargingSessionService->create($createChargingSessionDto);
 
@@ -106,7 +106,7 @@ final class ChargingSessionController
          * } $data
          */
         $data = $updateChargingSessionRequest->all();
-        $updateChargingSessionDto->fillFromArray($data);
+        $updateChargingSessionDto->fill($data);
 
         /** @var ChargingSession $chargingSession */
         $chargingSession = $this->chargingSessionService->update(

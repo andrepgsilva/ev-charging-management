@@ -70,7 +70,7 @@ final class VehicleController
          * } $data
          */
         $data = $createVehicleRequest->all();
-        $createVehicleDto->fillFromArray($data);
+        $createVehicleDto->fill($data);
 
         $vehicle = $this->vehicleService->create($createVehicleDto);
 
@@ -102,7 +102,7 @@ final class VehicleController
          * } $data
          */
         $data = $updateVehicleRequest->all();
-        $updateVehicleDto->fillFromArray($data);
+        $updateVehicleDto->fill($data);
 
         /** @var Vehicle $vehicle */
         $vehicle = $this->vehicleService->update(
