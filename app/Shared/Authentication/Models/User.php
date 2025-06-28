@@ -29,7 +29,7 @@ final class User extends Authenticatable
     public function personalToken(): ?string
     {
         // @phpstan-ignore-next-line
-        return $this->tokens()->first()->token;
+        return $this->tokens()->first()->token ?? null;
     }
 
     /**
