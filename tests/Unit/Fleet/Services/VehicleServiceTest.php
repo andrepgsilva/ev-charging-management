@@ -45,7 +45,7 @@ it('creates a vehicle', function () {
     unset($vehicle->updated_at);
 
     $dto = new CreateVehicleDto();
-    $dto->fillFromArray($vehicle->toArray());
+    $dto->fill($vehicle->toArray());
 
     /** @var VehicleService */
     $service = app(VehicleService::class);

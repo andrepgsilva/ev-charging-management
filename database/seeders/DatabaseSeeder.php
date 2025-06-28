@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Modules\Fleet\Models\Vehicle;
+use App\Shared\Authentication\Models\User;
 use App\Modules\ChargingInfrastructure\Models\ChargingPoint;
+
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 final class DatabaseSeeder extends Seeder
 {

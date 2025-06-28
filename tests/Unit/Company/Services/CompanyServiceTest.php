@@ -43,13 +43,14 @@ it('creates a company', function () {
     unset($company->id);
     unset($company->created_at);
     unset($company->updated_at);
-    $company->tax_number = '678678788';
-    $company->email = 'pest@example.com';
 
     $dto = new CreateCompanyDto();
-    $dto->fillFromArray($company->toArray());
+    $dto->fill($company->toArray());
 
-    /** @var CompanyService */
+    $dto->taxNumber = '678678788';
+    $dto->email = 'pest@example.com';
+
+    /** @var CompanyService $service */
     $service = app(CompanyService::class);
 
     $company = $service->create($dto);

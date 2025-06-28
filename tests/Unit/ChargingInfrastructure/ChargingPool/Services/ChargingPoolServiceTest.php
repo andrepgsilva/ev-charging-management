@@ -61,7 +61,7 @@ it('creates a chargingPool', function () {
      * } $data
      */
     $data = $chargingPool->toArray();
-    $dto->fillFromArray($data);
+    $dto->fill($data);
 
     /** @var ChargingPoolService $service */
     $service = app(ChargingPoolService::class);

@@ -69,7 +69,7 @@ final class DriverController
          * } $data
          */
         $data = $createDriverRequest->all();
-        $createDriverDto->fillFromArray($data);
+        $createDriverDto->fill($data);
 
         $driver = $this->driverService->create($createDriverDto);
 
@@ -100,7 +100,7 @@ final class DriverController
          * } $data
          */
         $data = $updateDriverRequest->all();
-        $updateDriverDto->fillFromArray($data);
+        $updateDriverDto->fill($data);
 
         /** @var Driver $driver */
         $driver = $this->driverService->update(
