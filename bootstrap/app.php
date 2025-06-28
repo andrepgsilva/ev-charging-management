@@ -40,6 +40,10 @@ return Application::configure(basePath: dirname(__DIR__))
             Route::middleware('api')
                 ->prefix('api')
                 ->group(base_path('routes/charging-session.php'));
+
+            Route::middleware('api')
+                ->prefix('api')
+                ->group(base_path('routes/authentication.php'));
         },
         commands: __DIR__.'/../routes/console.php',
     )

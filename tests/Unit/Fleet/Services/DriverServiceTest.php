@@ -55,7 +55,7 @@ it('creates a driver', function () {
      * } $data
      */
     $data = $driver->toArray();
-    $dto->fillFromArray($data);
+    $dto->fill($data);
 
     /** @var DriverService $service */
     $service = app(DriverService::class);

@@ -6,17 +6,27 @@ namespace Database\Factories;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use App\Shared\Authentication\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Shared\Authentication\Models\User>
  */
 final class UserFactory extends Factory
 {
+    protected $model = User::class;
+
     /**
      * The current password being used by the factory.
      */
     protected static ?string $password;
+
+    public function configure(): static
+    {
+        return $this->afterCreating(function (User $user) {
+            $user->createToken('auth_token')->plainTextToken;
+        });
+    }
 
     /**
      * Define the model's default state.

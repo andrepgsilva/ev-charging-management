@@ -56,7 +56,7 @@ it('creates a chargingPoint', function () {
      * } $data
      */
     $data = $chargingPoint->toArray();
-    $dto->fillFromArray($data);
+    $dto->fill($data);
 
     /** @var ChargingPointService $service */
     $service = app(ChargingPointService::class);
