@@ -17,6 +17,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @property string $name
  * @property string $email
  * @property ?string $email_verified_at
+ * @property string $password
  * @property string $token
  */
 final class User extends Authenticatable
