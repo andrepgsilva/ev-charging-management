@@ -71,7 +71,7 @@ jobs:
       contents: 'read'
       id-token: 'write'
 
-    environment: development
+    environment: production
 
     steps:
       - name: Checkout
