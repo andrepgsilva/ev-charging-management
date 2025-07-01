@@ -13,6 +13,7 @@ Built with **Laravel**, **PostgreSQL**, **Google Cloud** and **Docker**, the pro
 - Laravel 12
 - PostgreSQL
 - Docker
+- Sanctum (Auth)
 - Pest (testing)
 - PHPStan (static analysis)
 - Laravel Pint (code style)
@@ -88,6 +89,10 @@ The charging_sessions table is expected to grow rapidly, with millions of record
 - Performance: Queries for recent sessions (e.g., “last month’s usage”) only scan relevant partitions, not the entire table.
 - Maintenance: Old data can be dropped instantly by removing a partition, making retention policies efficient.
 - Scalability: Each partition remains a manageable size, avoiding full-table scans.
+
+### Auth
+For this project scope, we are using token based authentication using Laravel Sanctum. It's an easy approach but at the same time robust for many cases, and it perfectly suits our needs for secure API authentication.
+
 
 ### 🧑‍💻 Author
 Made with ❤️ by Andre Silva

@@ -28,6 +28,11 @@ final readonly class UserRepository
         return $this->model->newQuery()->find($id);
     }
 
+    public function getByEmail(string $email): ?User
+    {
+        return $this->model->newQuery()->where('email', $email)->first();
+    }
+
     /** @param array<string, mixed> $data */
     public function create(array $data): User
     {
