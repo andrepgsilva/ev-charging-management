@@ -12,6 +12,8 @@ Built with **Laravel**, **PostgreSQL**, **Google Cloud** and **Docker**, the pro
 - PHP 8.3
 - Laravel 12
 - PostgreSQL
+- Google Cloud
+- Github Actions
 - Docker
 - Sanctum (Auth)
 - Pest (testing)
