@@ -1,3 +1,4 @@
+[![Laravel CI](https://github.com/andrepgsilva/ev-charging-management/actions/workflows/laravel.yaml/badge.svg?branch=development)](https://github.com/andrepgsilva/ev-charging-management/actions/workflows/laravel.yaml)
 # ⚡ EV Charging Management System
 
 This is a backend system for managing Electric Vehicle (EV) charging sessions for companies.  
