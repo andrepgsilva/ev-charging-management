@@ -32,7 +32,7 @@ it('creates a monthly partition table for charging_sessions when table exists', 
 
     DB::shouldReceive('statement')
         ->once()
-        ->with(trim($expectedQuery));
+        ->with(mb_trim($expectedQuery));
 
     $result = Artisan::call('app:create-charging-session-monthly-partition-table');
 
