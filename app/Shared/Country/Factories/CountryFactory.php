@@ -24,7 +24,7 @@ final class CountryFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'iso' => $this->faker->unique()->countryCode(),
-            'image_url' => $this->faker->imageUrl()
+            'image_url' => $this->faker->imageUrl(),
         ];
     }
 }

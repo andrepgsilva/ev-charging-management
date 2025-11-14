@@ -2,63 +2,63 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\Fleet\Repositories;
+namespace App\Shared\Country\Repositories;
 
-use App\Modules\Fleet\Models\Driver;
+use App\Shared\Country\Models\Country;
 use Illuminate\Database\Eloquent\Collection;
 
-final readonly class DriverRepository
+final readonly class CountryRepository
 {
     public function __construct(
-        private Driver $model
+        private Country $model
     ) {
         //
     }
 
     /**
-     * @return Collection<int, Driver>
+     * @return Collection<int, Country>
      */
     public function getAll(): Collection
     {
         return $this->model->newQuery()->latest()->get();
     }
 
-    public function getById(int $id): ?Driver
+    public function getById(int $id): ?Country
     {
         return $this->model->newQuery()->find($id);
     }
 
     /** @param array<string, mixed> $data */
-    public function create(array $data): Driver
+    public function create(array $data): Country
     {
         return $this->model->newQuery()->create($data);
     }
 
     /** @param array<string, mixed> $data */
-    public function update(Driver|int $driver, array $data): ?Driver
+    public function update(Country|int $country, array $data): ?Country
     {
-        if (! ($driver instanceof Driver)) {
-            $driver = $this->getById($driver);
+        if (! ($country instanceof Country)) {
+            $country = $this->getById($country);
         }
 
-        if (! is_null($driver)) {
-            $driver->fill($data);
-            $driver->save();
+        if (! is_null($country)) {
+            $country->fill($data);
+            $country->save();
 
-            return $driver;
+            return $country;
         }
 
         return null;
     }
 
-    public function delete(Driver|int $driver): bool
+    public function delete(Country|int $country): bool
     {
-        if (! ($driver instanceof Driver)) {
-            $driver = $this->getById($driver);
+        if (! ($country instanceof Country)) {
+            $country = $this->getById($country);
         }
 
-        if (! is_null($driver)) {
-            return (bool) $driver->delete();
+        if (! is_null($country)) {
+            return (bool) $country->delete();
         }
 
         return false;

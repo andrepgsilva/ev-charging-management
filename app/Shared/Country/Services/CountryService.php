@@ -2,47 +2,47 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\Fleet\Services;
+namespace App\Shared\Country\Services;
 
 use Illuminate\Support\Collection;
-use App\Modules\Fleet\Models\Driver;
-use App\Modules\Fleet\Dtos\Driver\CreateDriverDto;
-use App\Modules\Fleet\Dtos\Driver\UpdateDriverDto;
-use App\Modules\Fleet\Repositories\DriverRepository;
+use App\Shared\Country\Models\Country;
+use App\Shared\Country\Dtos\CreateCountryDto;
+use App\Shared\Country\Dtos\UpdateCountryDto;
+use App\Shared\Country\Repositories\CountryRepository;
 
-final readonly class DriverService
+final readonly class CountryService
 {
     public function __construct(
-        private DriverRepository $driverRepository
+        private CountryRepository $countryRepository
     ) {
         //
     }
 
     /**
-     * @return Collection<int, Driver>
+     * @return Collection<int, Country>
      */
     public function getAll(): Collection
     {
-        return $this->driverRepository->getAll();
+        return $this->countryRepository->getAll();
     }
 
-    public function getById(int $id): ?Driver
+    public function getById(int $id): ?Country
     {
-        return $this->driverRepository->getById($id);
+        return $this->countryRepository->getById($id);
     }
 
-    public function create(CreateDriverDto $createDriverDto): Driver
+    public function create(CreateCountryDto $createCountryDto): Country
     {
-        return $this->driverRepository->create($createDriverDto->toArray());
+        return $this->countryRepository->create($createCountryDto->toArray());
     }
 
-    public function update(Driver|int $driver, UpdateDriverDto $updateDriverDto): ?Driver
+    public function update(Country|int $country, UpdateCountryDto $updateCountryDto): ?Country
     {
-        return $this->driverRepository->update($driver, $updateDriverDto->toArray());
+        return $this->countryRepository->update($country, $updateCountryDto->toArray());
     }
 
-    public function delete(Driver|int $driver): bool
+    public function delete(Country|int $country): bool
     {
-        return $this->driverRepository->delete($driver);
+        return $this->countryRepository->delete($country);
     }
 }

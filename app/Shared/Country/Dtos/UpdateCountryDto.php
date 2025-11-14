@@ -6,21 +6,20 @@ namespace App\Shared\Country\Dtos;
 
 use App\Shared\Traits\DtoTrait;
 
-final class CreateCountryDto
+final class UpdateCountryDto
 {
-    use DtoTrait;
-
     /**
      *  @use DtoTrait<array{
-     *       string name,
-     *       string iso,
-     *       string imageUrl
+     *       name?: string,
+     *       iso?: string,
+     *       imageUrl?: string
      *  }>
      */
+    use DtoTrait;
 
-    public string $name;
+    public ?string $name;
 
-    public string $iso;
+    public ?string $iso;
 
-    public string $imageUrl;
+    public ?string $imageUrl;
 }
