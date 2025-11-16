@@ -69,6 +69,8 @@
             "phpstan analyse"
         ],
         "test:type-coverage": "pest --type-coverage --min=100",
+        "test:file": "pest",
+        "test:test-name": "pest --filter",
         "test:unit": "pest --parallel --ci --coverage --min=100",
         "test": [
             "@test:lint",
