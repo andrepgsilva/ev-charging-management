@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    extra_hosts:
+    - "host.docker.internal:host-gateway"
     ports:
       - "8080:8080"
     volumes:
@@ -26,3 +28,4 @@ services:
       POSTGRES_PASSWORD: mysecretpassword
     ports:
       - "5433:5432"
+
