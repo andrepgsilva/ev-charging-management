@@ -29,3 +29,9 @@ services:
     ports:
       - "5433:5432"
 
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:4.2
+    volumes:
+     - ./rabbitmq-volume:/var/lib/rabbitmq
+

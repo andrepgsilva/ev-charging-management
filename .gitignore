@@ -24,3 +24,4 @@ yarn-error.log
 /.zed
 postgres_data
 .vscode
+rabbitmq-volume
