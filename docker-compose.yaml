@@ -40,3 +40,11 @@ services:
       RABBITMQ_DEFAULT_USER: user
       RABBITMQ_DEFAULT_PASS: password
 
+  rabbitmq-management:
+    container_name: rabbitmq-management
+    image: rabbitmq:3-management
+    ports:
+      - "8800:15672"
+    depends_on:
+      - rabbitmq
+
