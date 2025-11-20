@@ -12,15 +12,16 @@ services:
       - .:/app
 
   postgres:
-    image: postgres:latest
+    image: postgres:18.1
     environment:
-      POSTGRES_USER:
+      POSTGRES_USER: user
       POSTGRES_PASSWORD: password
       POSTGRES_DB: mydb
+      PGDATA: /var/lib/postgresql/18/docker
     ports:
       - "5432:5432"
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      - ./postgres_data:/var/lib/postgresql
 
   testpostgres:
     image: postgres:latest
