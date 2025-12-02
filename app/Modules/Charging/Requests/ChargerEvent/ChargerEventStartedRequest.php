@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Modules\Charging\Requests\ChargingSession;
+namespace App\Modules\Charging\Requests\ChargerEvent;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-final class CreateChargingSessionRequest extends FormRequest
+final class ChargerEventStartedRequest extends FormRequest
 {
     public function authorize(): bool
     {

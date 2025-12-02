@@ -4,45 +4,15 @@ declare(strict_types=1);
 
 namespace App\Modules\Charging\Services;
 
-use Illuminate\Support\Collection;
-use App\Modules\Charging\Models\ChargingSession;
-use App\Modules\Charging\Repositories\ChargingSessionRepository;
-use App\Modules\Charging\Dtos\ChargingSession\CreateChargingSessionDto;
-use App\Modules\Charging\Dtos\ChargingSession\UpdateChargingSessionDto;
+use App\Modules\Charging\Jobs\SessionStartedJob;
+use App\Modules\Charging\Dtos\ChargerEvent\ChargerEventStartedDto;
 
-final readonly class ChargingSessionService
+final readonly class ChargerEventService
 {
-    public function __construct(
-        private ChargingSessionRepository $ChargingSessionRepository
-    ) {
-        //
-    }
-
-    /**
-     * @return Collection<int, ChargingSession>
-     */
-    public function getAll(): Collection
+    public function started(ChargerEventStartedDto $chargerEventStartedDto): void
     {
-        return $this->ChargingSessionRepository->getAll();
-    }
+        $chargerEventStartedData = $chargerEventStartedDto->toArray();
 
-    public function getById(int $id): ?ChargingSession
-    {
-        return $this->ChargingSessionRepository->getById($id);
-    }
-
-    public function create(CreateChargingSessionDto $createChargingSessionDto): ChargingSession
-    {
-        return $this->ChargingSessionRepository->create($createChargingSessionDto->toArray());
-    }
-
-    public function update(ChargingSession|int $ChargingSession, UpdateChargingSessionDto $updateChargingSessionDto): ?ChargingSession
-    {
-        return $this->ChargingSessionRepository->update($ChargingSession, $updateChargingSessionDto->toArray());
-    }
-
-    public function delete(ChargingSession|int $ChargingSession): bool
-    {
-        return $this->ChargingSessionRepository->delete($ChargingSession);
+        SessionStartedJob::dispatch($chargerEventStartedData)->onQueue('session.started');
     }
 }

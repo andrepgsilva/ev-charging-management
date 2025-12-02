@@ -84,6 +84,13 @@ return [
                     'password' => env('RABBITMQ_PASSWORD', 'guest'),
                     'vhost' => env('RABBITMQ_VHOST', '/'),
                 ],
+            ],
+            'queue' => '',
+            'options' => [
+                'exchange' => [
+                    'name' => 'ev.events',
+                    'type' => 'topic'
+                ]
             ]
         ],
     ],

@@ -1,0 +1,10 @@
+{
+    "charging_point_id": 1,
+    "vehicle_id": 1,
+    "driver_id": 1,
+    "start_time": "2025-11-27 22:45:00",
+    "end_time": "2025-11-28 22:45:00",
+    "energy_kwh": "231.2",
+    "cost": "92.31",
+    "connector_number": 1
+}

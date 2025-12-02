@@ -81,7 +81,10 @@
             "@test:type-coverage",
             "@test:unit"
         ],
-        "dartisan": "docker-compose exec app php artisan"
+        "dartisan": "docker-compose exec app php artisan",
+        "call-workers": [
+            "docker-compose exec app php artisan queue:work rabbitmq --queue=session.started"
+        ]
     },
     "extra": {
         "laravel": {
