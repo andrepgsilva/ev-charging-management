@@ -1,6 +1,7 @@
-FROM php:8.3-rc-fpm
+FROM php:8.4-fpm
 
 RUN apt-get update && apt-get install -y \
+    nginx \
     libpng-dev \
     libjpeg62-turbo-dev \
     libfreetype6-dev \
@@ -11,25 +12,26 @@ RUN apt-get update && apt-get install -y \
     git \
     unzip \
     libpq-dev \
+    procps \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd pdo pdo_pgsql zip bcmath opcache \
+    && docker-php-ext-install gd pdo pdo_pgsql zip bcmath opcache sockets \
     && pecl install redis \
     && docker-php-ext-enable redis \
     && pecl install xdebug \
     && docker-php-ext-enable xdebug
 
-WORKDIR /app
+WORKDIR /var/www/html
 
 COPY composer.json composer.lock ./
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && composer install --no-autoloader --no-scripts --no-progress --prefer-dist
 
-COPY ./xdebug.ini /usr/local/etc/php/conf.d/
+COPY ./docker/xdebug.ini /usr/local/etc/php/conf.d/
 
 COPY . .
 
 RUN composer install --no-dev --optimize-autoloader
 
-EXPOSE 8080
+RUN rm -f /etc/nginx/sites-enabled/default
 
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8080"]
+CMD sh -c "php-fpm & exec nginx -g 'daemon off;'"

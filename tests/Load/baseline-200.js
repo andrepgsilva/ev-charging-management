@@ -6,10 +6,10 @@ export const options = {
     scenarios: {
         baseline: {
             executor: 'constant-arrival-rate',
-            rate: 200,
+            rate: 80,
             timeUnit: '1s',
             duration: '5m',
-            preAllocatedVUs: 200,
+            preAllocatedVUs: 400,
             maxVUs: 500,
         },
     },

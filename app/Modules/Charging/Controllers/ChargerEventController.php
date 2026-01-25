@@ -34,12 +34,12 @@ final class ChargerEventController
          *  connectorNumber: int,
          * }
          */
-        $data = $chargerEventStartedRequest->all();
-        $chargerEventStartedDto->fill($data);
-
-        $chargerEventService = app(ChargerEventService::class);
-
-        $chargerEventService->started($chargerEventStartedDto);
+        /* $data = $chargerEventStartedRequest->all(); */
+        /* $chargerEventStartedDto->fill($data); */
+        /**/
+        /* $chargerEventService = app(ChargerEventService::class); */
+        /**/
+        /* $chargerEventService->started($chargerEventStartedDto); */
 
         return $this->successResponse([], 'ChargerEventStarted message processed.');
     }
