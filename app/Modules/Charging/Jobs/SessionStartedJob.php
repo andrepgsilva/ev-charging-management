@@ -1,19 +1,20 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Modules\Charging\Jobs;
 
+use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Foundation\Queue\Queueable;
 use App\Modules\Charging\Repositories\ChargingSessionRepository;
 
-class SessionStartedJob implements ShouldQueue
+final class SessionStartedJob implements ShouldQueue
 {
-    use Queueable, Dispatchable;
+    use Dispatchable, Queueable;
 
     /**
-     * @param array $payload,
-     * @param string $connection
+     * @param  string  $connection
      */
     public function __construct(
         public array $payload,

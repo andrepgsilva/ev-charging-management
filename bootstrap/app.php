@@ -49,7 +49,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 ->prefix('api')
                 ->group(base_path('routes/authentication.php'));
         },
-        commands: __DIR__ . '/../routes/console.php',
+        commands: __DIR__.'/../routes/console.php',
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->append(ForceJsonHeaderResponse::class);
@@ -65,4 +65,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 422
             );
         });
-    })->create();
+    })
+    ->withEvents(discover: [
+        __DIR__.'/../app/Modules/*/Listeners',
+    ])->create();

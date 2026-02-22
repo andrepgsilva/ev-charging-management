@@ -23,11 +23,18 @@ final class ChargerEventStartedDto
     use DtoTrait;
 
     public int $chargingPointId;
+
     public int $vehicleId;
+
     public int $driverId;
+
     public string $startTime;
+
     public string $endTime;
+
     public string $energyKwh;
+
     public string $cost;
+
     public int $connectorNumber;
 }

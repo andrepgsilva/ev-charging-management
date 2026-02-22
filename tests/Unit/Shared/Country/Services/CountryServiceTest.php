@@ -51,7 +51,7 @@ it('retrieves all countries', function () {
 /*      *  phone?: string, */
 /*      *  address?: string, */
 /*      * } $data */
-/*      */
+/* */
 /*     $data = $driver->toArray(); */
 /*     $dto->fill($data); */
 /**/

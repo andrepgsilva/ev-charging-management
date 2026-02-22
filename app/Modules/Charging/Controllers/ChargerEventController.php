@@ -6,9 +6,9 @@ namespace App\Modules\Charging\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use App\Shared\Traits\ApiResponseTrait;
+use App\Modules\Charging\Services\ChargerEventService;
 use App\Modules\Charging\Dtos\ChargerEvent\ChargerEventStartedDto;
 use App\Modules\Charging\Requests\ChargerEvent\ChargerEventStartedRequest;
-use App\Modules\Charging\Services\ChargerEventService;
 
 final class ChargerEventController
 {
@@ -20,7 +20,6 @@ final class ChargerEventController
     public function sessionStarted(ChargerEventStartedRequest $chargerEventStartedRequest): JsonResponse
     {
         $chargerEventStartedDto = app(ChargerEventStartedDto::class);
-
 
         /**
          * @var array{

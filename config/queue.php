@@ -89,9 +89,9 @@ return [
             'options' => [
                 'exchange' => [
                     'name' => 'ev.events',
-                    'type' => 'topic'
-                ]
-            ]
+                    'type' => 'topic',
+                ],
+            ],
         ],
     ],
 
